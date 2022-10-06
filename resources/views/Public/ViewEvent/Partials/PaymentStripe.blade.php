@@ -17,7 +17,7 @@
 <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">
 
-    var stripe = Stripe('<?php echo $account_payment_gateway->config['publishableKey']; ?>');
+    var stripe = Stripe('<?php echo 'jfrt9859689';//$account_payment_gateway->config['publishableKey']; ?>');
     var elements = stripe.elements();
 
     var style = {

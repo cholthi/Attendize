@@ -1,4 +1,3 @@
-<form class="online_payment" action="<?php echo route('postCreateOrder', ['event_id' => $event->id]); ?>" method="post" id="stripe-sca-payment-form">
     <div class="form-row">
         <label for="card-element">
             @lang("Public_ViewEvent.stripe_credit_or_debit_card")
@@ -12,12 +11,9 @@
     {!! Form::token() !!}
 
     <input class="btn btn-lg btn-success card-submit" style="width:100%;" type="submit" value="@lang("Public_ViewEvent.complete_payment")">
-
-</form>
-<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">
 
-    var stripe = Stripe('<?php echo $account_payment_gateway->config['publishableKey']; ?>');
+    var stripe = Stripe('<?php echo 'fnejhu85968596';//$account_payment_gateway->config['publishableKey']; ?>');
     var elements = stripe.elements();
 
     var style = {

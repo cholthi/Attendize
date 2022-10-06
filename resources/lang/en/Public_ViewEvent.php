@@ -59,7 +59,7 @@ return [
     'order_summary'                     => 'Order Summary',
     'organiser_dashboard'               => 'Organiser Dashboard',
     'pay_using_offline_methods'         => 'Pay using offline methods',
-    'payment_information'               => 'Payment Information',
+    'payment_information'               => 'Pay with',
     'payment_instructions'              => 'Payment instructions',
     'presents'                          => 'presents',
     'price'                             => 'Price',

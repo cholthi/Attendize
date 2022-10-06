@@ -65,13 +65,22 @@
         </div>
         <div class="col-md-8 col-md-pull-4">
             <div class="row">
-
+                {!! Form::open(['url' => route('postCreateOrder', ['event_id' => $event->id]), 'class' => 'ajax']) !!}
                 @if($order_requires_payment)
                 @include('Public.ViewEvent.Partials.OfflinePayments')
                 @endif
+                @foreach($all_paymentGateways as $payment_gateway)
+                <input  name="payment_gateway" type="radio" value="{{$payment_gateway->id}}" data-toggle="collapse" data-target="#gateway_{{$payment_gateway->id}}"/>
+                <label for="gateway_{{$payment_gateway->id}}">Pay using {{$payment_gateway->provider_name}}</label>
+                <div style="margin-top:10px;"></div>
+                <div class="collapse" id="gateway_{{$payment_gateway->id}}" style="display:none">
                 @if(View::exists($payment_gateway['checkout_blade_template']) && $order_requires_payment)
-                @include($payment_gateway['checkout_blade_template'])
+                {{-- @include($payment_gateway['checkout_blade_template']) --}}
                 @endif
+              </div>
+                @endforeach
+                <input class="btn btn-lg btn-success card-submit" style="width:100%;" type="submit" value="@lang("Public_ViewEvent.complete_payment")">
+                {!! Form::close() !!}
                 @if(!$order_requires_payment)
                 @include('Public.ViewEvent.Partials.PaymentFree')
                 @endif

@@ -192,6 +192,7 @@ class EventCheckoutController extends Controller
         }
 
         $paymentGateway = $activeAccountPaymentGateway ? $activeAccountPaymentGateway->payment_gateway : false;
+        //$all_paymentGateways = PaymentGateway::get();
 
         /*
          * The 'ticket_order_{event_id}' session stores everything we need to complete the transaction.
@@ -367,7 +368,8 @@ class EventCheckoutController extends Controller
                      'account_payment_gateway' => $account_payment_gateway,
                      'payment_gateway' => $payment_gateway,
                      'secondsToExpire' => $secondsToExpire,
-                     'payment_failed' => $payment_failed
+                     'payment_failed' => $payment_failed,
+                     'all_paymentGateways' => PaymentGateway::get()
         ];
 
         return view('Public.ViewEvent.EventPagePayment', $viewData);
@@ -390,9 +392,24 @@ class EventCheckoutController extends Controller
         session()->remove('ticket_order_' . $event_id . '.request_data');
         session()->push('ticket_order_' . $event_id . '.request_data', $request_data);
 
+
+
         $ticket_order = session()->get('ticket_order_' . $event_id);
 
         $event = Event::findOrFail($event_id);
+
+        if($request->has('payment_gateway')) {
+          $activeAccountPaymentGateway = $event->account->getGateway($request->get('payment_gateway'));
+          //if no payment gateway configured and no offline pay, don't go to the next step and show user error
+          if (empty($activeAccountPaymentGateway) && !$event->enable_offline_payments) {
+              return response()->json([
+                  'status'  => 'error',
+                  'message' => 'No payment gateway configured',
+              ]);
+          }
+
+          $paymentGateway = $activeAccountPaymentGateway ? $activeAccountPaymentGateway->payment_gateway : false;
+        }
 
         $order_requires_payment = $ticket_order['order_requires_payment'];
 
@@ -409,11 +426,11 @@ class EventCheckoutController extends Controller
             $order_service = new OrderService($ticket_order['order_total'], $ticket_order['total_booking_fee'], $event);
             $order_service->calculateFinalCosts();
 
-            $payment_gateway_config = $ticket_order['account_payment_gateway']->config + [
+            $payment_gateway_config = $activeAccountPaymentGateway->config + [
                                                     'testMode' => config('attendize.enable_test_payments')];
 
             $payment_gateway_factory = new PaymentGatewayFactory();
-            $gateway = $payment_gateway_factory->create($ticket_order['payment_gateway']->name, $payment_gateway_config);
+            $gateway = $payment_gateway_factory->create($paymentGateway->name, $payment_gateway_config);
             //certain payment gateways require an extra parameter here and there so this method takes care of that
             //and sets certain options for the gateway that can be used when the transaction is started
             $gateway->extractRequestParameters($request);
