@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Attendize\PaymentUtils;
 use App\Events\OrderCompletedEvent;
+use App\Models\SessionOrder;
 use App\Models\Account;
 use App\Models\AccountPaymentGateway;
 use App\Models\Affiliate;
@@ -19,6 +20,7 @@ use App\Models\Ticket;
 use App\Services\Order as OrderService;
 use Services\PaymentGateway\Factory as PaymentGatewayFactory;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Cookie;
 use DB;
 use Illuminate\Http\Request;
@@ -48,6 +50,20 @@ class EventCheckoutController extends Controller
          */
         $this->is_embedded = $request->get('is_embedded') == '1';
     }
+/* Precalculates the order reference for use by some payment gateways
+ * @Return string
+*/
+   public  function getOrderReference()
+   {
+       do {
+                    //generate a random string using Laravel's Str::Random helper
+                    $token = Str::Random(5) . date('jn');
+            } //check if the token already exists and if it does, try again
+
+        while (Order::where('order_reference', $token)->first());
+            return  $token;
+
+   }
 
     /**
      * Validate a ticket request. If successful reserve the tickets and redirect to checkout
@@ -194,6 +210,9 @@ class EventCheckoutController extends Controller
         $paymentGateway = $activeAccountPaymentGateway ? $activeAccountPaymentGateway->payment_gateway : false;
         //$all_paymentGateways = PaymentGateway::get();
 
+        //precrate order_reference
+        $order_reference = $this->getOrderReference();
+
         /*
          * The 'ticket_order_{event_id}' session stores everything we need to complete the transaction.
          */
@@ -204,6 +223,7 @@ class EventCheckoutController extends Controller
             'tickets'                 => $tickets,
             'total_ticket_quantity'   => $total_ticket_quantity,
             'order_started'           => time(),
+            'order_reference'         => $order_reference,
             'expires'                 => $order_expires_time,
             'reserved_tickets_id'     => $reservedTickets->id,
             'order_total'             => $order_total,
@@ -216,6 +236,17 @@ class EventCheckoutController extends Controller
             'account_payment_gateway' => $activeAccountPaymentGateway,
             'payment_gateway'         => $paymentGateway
         ]);
+
+        //Also save the order info in the session_order table for use by stateless http clients
+        $session_data = [
+          'order_total' => $order_total,
+          'order_reference' => $order_reference,
+          'event_id'        => $event_id
+        ];
+        $session_order = new SessionOrder();
+        $session_order->setData($session_data);
+        $session_order->order_reference = $order_reference;
+        $session_order->save();
 
         /*
          * If we're this far assume everything is OK and redirect them
@@ -344,6 +375,59 @@ class EventCheckoutController extends Controller
 
     }
 
+    public function mgurushNotifications(Request $request)
+    {
+        if($request->get('dispatch'))
+        {
+          $dispatch = $request->get('dispatch');
+        }
+
+        switch ($dispatch) {
+          case 'validate':
+            $session_order = SessionOrder::where('order_reference', $request->get('order_id'))->first();
+
+            if(!$session_order)
+            {
+              return response("error_code=400&error_message=Order Id not found")
+                     ->header('Content-Type', 'application/x-www-form-urlencoded');
+            }
+            $session_data = $session_order->getData();
+            $body = [
+              'merchant_code' => '2122',
+              'merchant_name' => 'Agoro',
+              'amount'        => $session_data['order_total'],
+              'order_ref'     => $session_order['order_reference'],
+              'currency'      => 'SSP',
+              'order_id'      => $session_order['order_reference']
+            ];
+            return response(http_build_query($body))
+                   ->header('Content-Type', 'application/x-www-form-urlencoded');
+            break;
+
+          case 'process':
+          $session_order =   SessionOrder::where('order_reference',$request->get('order_id'))->first();
+          $data['transaction_id'] = $request->get('transaction_id');
+          $session_order->setData($data);
+          $session_order->save();
+             $body = [
+              'error_code' => '200',
+              'error_message' => 'Payment Confirmed',
+              'callback'      => route('showOrderDetails', [
+                'is_embedded'     => 0,
+                'order_reference' => $session_order['order_reference'],
+            ])
+           ];
+           return response(http_build_query($body))
+                  ->header('Content-Type', 'application/x-www-form-urlencoded');
+
+            break;
+
+          default:
+            // code...
+            break;
+        }
+    }
+
     public function showEventPayment(Request $request, $event_id)
     {
         $order_session = session()->get('ticket_order_' . $event_id);
@@ -437,7 +521,8 @@ class EventCheckoutController extends Controller
 
             //generic data that is needed for most orders
             $order_total = $order_service->getGrandTotal();
-            $order_email = $ticket_order['request_data'][0]['order_email'];
+              //changed me. this is not an email but a pregenerated order ref for some payment gateways
+            $order_email = $ticket_order['order_reference'];
 
             $response = $gateway->startTransaction($order_total, $order_email, $event);
 
@@ -551,6 +636,8 @@ class EventCheckoutController extends Controller
 
             $request_data = $ticket_order['request_data'][0];
             $event = Event::findOrFail($ticket_order['event_id']);
+            $session_order = SessionOrder::where('order_reference', $ticket_order['order_reference'])->first();
+            $session_order_data = $session_order->getData();
             $attendee_increment = 1;
             $ticket_questions = isset($request_data['ticket_holder_questions']) ? $request_data['ticket_holder_questions'] : [];
 
@@ -561,6 +648,10 @@ class EventCheckoutController extends Controller
                 $order->transaction_id = $ticket_order['transaction_id'][0];
             }
 
+            if (isset($session_order_data['transaction_id'])) {
+                $order->transaction_id = $session_order_data['transaction_id'];
+            }
+
             if (isset($ticket_order['transaction_data'][0]['payment_intent'])) {
                 $order->payment_intent = $ticket_order['transaction_data'][0]['payment_intent'];
             }
@@ -569,6 +660,7 @@ class EventCheckoutController extends Controller
                 $order->payment_gateway_id = $ticket_order['payment_gateway']->id;
             }
             $order->first_name = sanitise($request_data['order_first_name']);
+            $order->order_reference = $ticket_order['order_reference'];
             $order->last_name = sanitise($request_data['order_last_name']);
             $order->email = sanitise($request_data['order_email']);
             $order->order_status_id = isset($request_data['pay_offline']) ? config('attendize.order.awaiting_payment') : config('attendize.order.complete');

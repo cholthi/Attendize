@@ -45,6 +45,11 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function () {
 
+      //payment callback
+      Route::get('payments/callback',
+          [EventCheckoutController::class, 'mgurushNotifications']
+      )->name('paymentCallbacks');
+
     /*
      * -------------------------
      * Installer

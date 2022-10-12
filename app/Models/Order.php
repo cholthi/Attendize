@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PDF;
-use Illuminate\Support\Str;
 use Superbalist\Money\Money;
 
 class Order extends MyBaseModel
@@ -204,15 +203,6 @@ class Order extends MyBaseModel
     {
         parent::boot();
 
-        static::creating(function ($order) {
-            do {
-                    //generate a random string using Laravel's Str::Random helper
-                    $token = Str::Random(5) . date('jn');
-            } //check if the token already exists and if it does, try again
-
-			while (Order::where('order_reference', $token)->first());
-            $order->order_reference = $token;
-		});
     }
 
     /**

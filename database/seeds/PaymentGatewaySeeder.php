@@ -62,5 +62,23 @@ class PaymentGatewaySeeder extends Seeder
             );
         }
 
+
+        $mgurush = DB::table('payment_gateways')->where('name', '=', 'Mgurush')->first();
+        if ($mgurush === null) {
+            DB::table('payment_gateways')->insert(
+                [
+                    'name' => 'Mgurush',
+                    'provider_name' => 'Mgurush',
+                    'provider_url' => 'https://www.stripe.com',
+                    'is_on_site' => 0,
+                    'can_refund' => 1,
+                    'default' => 0,
+                    'admin_blade_template' => 'ManageAccount.Partials.Stripe',
+                    'checkout_blade_template' => 'Public.ViewEvent.Partials.PaymentStripe'
+                ]
+            );
+        }
+
+
     }
 }

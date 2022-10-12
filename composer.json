@@ -14,6 +14,7 @@
     "require": {
         "php": "^7.3",
         "ext-json": "*",
+        "cholthi/omnipay-mgurush": "3.0.x-dev",
         "doctrine/dbal": "^2.9",
         "dompdf/dompdf": "^0.8",
         "fideloper/proxy": "^4.2",
@@ -45,6 +46,16 @@
         "superbalist/php-money": "^2.0",
         "vinelab/http": "~1.5"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./local/vendor/mgurush",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",
         "facade/ignition": "^1.4",
@@ -111,5 +122,6 @@
             ]
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev",
+    "prefer-stable" : true
 }

@@ -1,0 +1,37 @@
+{
+    "name": "cholthi/omnipay-mgurush",
+    "type": "library",
+    "description": "Mgurush support for Omnipay payment processing library",
+    "keywords": [
+        "mgurush",
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "purchase"
+    ],
+    "homepage": "https://github.com/cholthi/omnipay-mgurush",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Philip Chol",
+            "email": "cholthipaul@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Mgurush\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~3.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~3.0",
+        "squizlabs/php_codesniffer": "^3"
+    },
+    "extra": {
+        "branch-alias": {
+           "dev-master": "3.0.x-dev"
+        }
+    }
+}

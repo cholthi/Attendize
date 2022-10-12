@@ -44,6 +44,16 @@ class Factory
                     return new Stripe($gateway, $paymentGatewayConfig);
                 }
 
+            case Mgurush::GATEWAY_NAME :
+                    {
+
+                        $gateway = Omnipay::create($name);
+                        $gateway->initialize($paymentGatewayConfig);
+                        //$gateway->setPartnerCode('2122');
+
+                        return new Mgurush($gateway, $paymentGatewayConfig);
+                    }
+
             case StripeSCA::GATEWAY_NAME :
                 {
 
