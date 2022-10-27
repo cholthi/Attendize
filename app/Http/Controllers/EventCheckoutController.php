@@ -552,7 +552,7 @@ class EventCheckoutController extends Controller
                 $return = [
                     'status'       => 'success',
                     'redirectUrl'  => $response->getRedirectUrl(),
-                    'message'      => 'Redirecting to ' . $ticket_order['payment_gateway']->provider_name
+                    'message'      => 'Redirecting to ' . $paymentGateway->name
                 ];
 
                 // GET method requests should not have redirectData on the JSON return string

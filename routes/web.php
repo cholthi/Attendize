@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\EventAccessCodesController;
+use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\EventAttendeesController;
 use App\Http\Controllers\EventCheckInController;
 use App\Http\Controllers\EventCheckoutController;
@@ -49,6 +50,11 @@ Route::group(
       Route::get('payments/callback',
           [EventCheckoutController::class, 'mgurushNotifications']
       )->name('paymentCallbacks');
+
+/*Terms and conditions route
+     */
+    Route::get('terms-conditions',
+      [StaticPageController::class, 'showTermsAndConditions'])->name('termsAndConditions');
 
     /*
      * -------------------------
@@ -113,7 +119,7 @@ Route::group(
         )->name('showSignup');
 
         Route::post('/signup',
-            [UserSignupController::class, 'postSignup']);
+            [UserSignupController::class, 'postSignupv2']);
 
         /*
          * Confirm Email
@@ -205,6 +211,17 @@ Route::group(
         [EventCheckoutController::class, 'showOrderTickets']
     )->name('showOrderTickets');
 
+   /* Move these routes out of  organiser group to avoid using manage.organiser midleware
+   */
+     Route::get('organiser/create',
+                [OrganiserController::class, 'showCreateOrganiser']
+            )->name('showCreateOrganiser');
+
+            Route::post('organiser/create',
+                [OrganiserController::class, 'postCreateOrganiser']
+            )->name('postCreateOrganiser');
+
+
     /*
      * Backend routes
      */
@@ -280,13 +297,13 @@ Route::group(
                 [OrganiserCustomizeController::class, 'postEditOrganiser']
             )->name('postEditOrganiser');
 
-            Route::get('create',
+          /*  Route::get('create',
                 [OrganiserController::class, 'showCreateOrganiser']
             )->name('showCreateOrganiser');
 
             Route::post('create',
                 [OrganiserController::class, 'postCreateOrganiser']
-            )->name('postCreateOrganiser');
+            )->name('postCreateOrganiser'); */
 
             Route::post('{organiser_id}/page_design',
                 [OrganiserCustomizeController::class, 'postEditOrganiserPageDesign']

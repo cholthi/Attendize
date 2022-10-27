@@ -15,6 +15,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Services\Order as OrderService;
 use App\Models\Ticket;
+use App\Attendize\Utils;
 use Auth;
 use Config;
 use DB;
@@ -155,6 +156,7 @@ class EventAttendeesController extends MyBaseController
             $order->amount = $ticket_price;
             $order->account_id = Auth::user()->account_id;
             $order->event_id = $event_id;
+            $order->order_reference = Utils::getOrderReference();
 
             // Calculating grand total including tax
             $orderService = new OrderService($ticket_price, 0, $event);
@@ -228,7 +230,7 @@ class EventAttendeesController extends MyBaseController
 
             return response()->json([
                 'status' => 'error',
-                'error'  => trans("Controllers.attendee_exception")
+                'error'  => $e->getMessage() //trans("Controllers.attendee_exception")
             ]);
         }
 

@@ -93,7 +93,7 @@ return array (
   'ticket_description' => 'Ticket Description',
   'ticket_price' => 'Ticket Price',
   'ticket_title' => 'Ticket Title',
-  'ticket_title_placeholder' => 'E.g: General Admission',
+  'ticket_title_placeholder' => 'E.g: VIP',
   'update_order' => 'Update Order',
   'widgets' => 'Widgets',
   'LLH:obsolete' => 

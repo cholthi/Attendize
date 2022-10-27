@@ -75,7 +75,9 @@ class OrganiserController extends MyBaseController
         // belong to that organiser
         if ($request->get('first_run') === 'yup') {
             User::first()->update(['organiser_id' => $organiser->id]);
-        }
+        } else{
+              User::where('id', auth()->user()->id)->firstOrFail()->update(['organiser_id' => $organiser->id]);
+         }
 
         session()->flash('message', trans("Controllers.successfully_created_organiser"));
 

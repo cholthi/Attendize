@@ -14,12 +14,12 @@
                 </div>
                 <h2>@lang("User.sign_up")</h2>
 
-                @if(Request::input('first_run'))
+              {{--  @if(Request::input('first_run')) --}}
                     <input type="hidden" name="first_run" id="first_run" value="yup" />
                     <div class="alert alert-info">
                         @lang("User.sign_up_first_run")
                     </div>
-                @endif
+              {{-- @endif --}}
 
                 <div class="row">
                     <div class="col-md-6">

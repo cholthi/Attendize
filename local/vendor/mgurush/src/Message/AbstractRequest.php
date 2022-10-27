@@ -9,43 +9,80 @@ use Omnipay\Common\Message\RequestInterface;
  */
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
-    protected $liveEndpoint = 'https://app.mgurush.com/mGurush_eCom/txnPin/txnPin.html';
-    protected $testEndpoint = 'https://uat.mgurush.com/mGurush_eCom/txnPin/txnPin.html';
+    protected $liveEndpoint = 'https://app.mgurush.com/irh//ecomTxn/betting';
+    protected $testEndpoint = 'https://uat.mgurush.com/irh//ecomTxn/betting';
     protected $endpoint = '';
+
+    public function getHeaders()
+    {
+        $headers = array();
+       // $headers['Accept'] = "application/json";
+        $headers['Accept'] = "application/json";
+        $headers['Content-Type'] = "application/json";
+        $headers['Hmac'] = $this->get_hmac_hash();
+        $headers['access_key'] = $this->getAccessKey();
+
+
+        return $headers;
+    }
 
     public function sendData($data)
     {
-        return $this->response = new Response($this, $data, $this->getEndpoint());
+     $headers = $this->getHeaders();
+     $body = json_encode($data) ;
+
+    $httpResponse = $this->httpClient->request($this->getHttpMethod(), $this->getEndpoint(), $headers, $body);
+        return $this->response = new Response($this, $data, $headers);
     }
 
-    public function getPartnerCode()
+    public function getCurrency()
     {
-        return $this->getParameter('partnerCode');
+        return $this->getParameter('currency');
     }
 
-    public function setPartnerCode($value)
+    public function setCurrency($value)
     {
-        return $this->setParameter('partnerCode', $value);
+        return $this->setParameter('currency', $value);
     }
 
-    public function getOrderId()
+    public function getAccessKey()
     {
-        return $this->getParameter('order_id');
+        return $this->getParameter('access_key');
     }
 
-    public function setOrderId($value)
+    public function setAccessKey($value)
     {
-        return $this->setParameter('order_id', $value);
+        return $this->setParameter('access_key', $value);
+    }
+
+    public function getSecretKey()
+    {
+        return $this->getParameter('secret_key');
+    }
+
+    public function setSecretKey($value)
+    {
+        return $this->setParameter('secret_key', $value);
+    }
+
+    public function getAmount()
+    {
+        return $this->getParameter('amount');
+    }
+
+    public function setAmount($value)
+    {
+        return $this->setParameter('amount', $value);
     }
 
     public function getTnxRefNumber()
     {
-        return $this->getParameter('tnxRefNumber');
+        return $this->getParameter('txnRefNumber');
     }
 
     public function setTxnRefNumber($value)
     {
-        return $this->setParameter('tnxRefNumber', $value);
+        return $this->setParameter('txnRefNumber', $value);
     }
 
     public function getTestMode()
@@ -65,8 +102,26 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getHttpMethod()
     {
-        return 'GET';
+        return 'POST';
     }
+
+   public function get_hmac_hash()
+     {
+       $params = [
+         'mobileNumber' => $this->getMobileNumber(),
+         'amount'       => $this->getAmount(),
+         'currency'     => $this->getCurrency(),
+         'txnRefNumber' => $this->getTnxRefNumber()
+       ];
+     $encoded = json_encode($param);
+     $raw = hash_hmac('sha256',$encoded, $secret, true);
+
+      $hash = base64_encode($raw);
+
+      return $hash;
+
+    }
+
 
 
 }

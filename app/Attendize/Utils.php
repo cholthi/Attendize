@@ -4,6 +4,8 @@ namespace App\Attendize;
 
 use Auth;
 use PhpSpec\Exception\Exception;
+use Illuminate\Support\Str;
+use App\Models\Order;
 
 class Utils
 {
@@ -168,4 +170,19 @@ class Utils
         }
         return '';
     }
+
+    /* Precalculates the order reference for use by some payment gateways
+     * @Return string
+    */
+       public static function getOrderReference()
+       {
+           do {
+                        //generate a random string using Laravel's Str::Random helper
+                        $token = Str::Random(5) . date('jn');
+                } //check if the token already exists and if it does, try again
+
+            while (Order::where('order_reference', $token)->first());
+                return  $token;
+
+       }
 }

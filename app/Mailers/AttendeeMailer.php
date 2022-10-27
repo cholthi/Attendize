@@ -21,7 +21,7 @@ class AttendeeMailer extends Mailer
             'attendee' => $attendee,
         ];
 
-        Mail::send('Mailers.TicketMailer.SendAttendeeTicket', $data, function ($message) use ($attendee) {
+        Mail::send('en.Mailers.TicketMailer.SendAttendeeTicket', $data, function ($message) use ($attendee) {
             $message->to($attendee->email);
             $message->subject(trans("Email.your_ticket_for_event", ["event" => $attendee->order->event->title]));
 
@@ -83,7 +83,7 @@ class AttendeeMailer extends Mailer
             'attendee' => $attendee,
         ];
 
-        Mail::send('Mailers.TicketMailer.SendAttendeeInvite', $data, function ($message) use ($attendee) {
+        Mail::send('en.Mailers.TicketMailer.SendAttendeeInvite', $data, function ($message) use ($attendee) {
             $message->to($attendee->email);
             $message->subject(trans("Email.your_ticket_for_event", ["event" => $attendee->order->event->title]));
 

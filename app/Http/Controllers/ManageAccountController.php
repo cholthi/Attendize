@@ -21,6 +21,7 @@ use Services\PaymentGateway\Dummy;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Services\PaymentGateway\Stripe;
+use Services\PaymentGateway\Mgurush;
 use Services\PaymentGateway\StripeSCA;
 use Spatie\Permission\Exceptions\RoleDoesNotExist;
 use Utils;
@@ -130,6 +131,9 @@ class ManageAccountController extends MyBaseController
             case StripeSCA::GATEWAY_NAME :
                 $config = $request->get('stripe_sca');
                 break;
+            case Mgurush::GATEWAY_NAME :
+                    $config = $request->get('mgurush');
+                    break;
             case Dummy::GATEWAY_NAME :
                 break;
 
@@ -220,7 +224,7 @@ class ManageAccountController extends MyBaseController
             'inviter'       => Auth::user(),
         ];
 
-        Mail::send('Emails.inviteUser', $data, static function ($message) use ($data) {
+        Mail::send('en.Emails.inviteUser', $data, static function ($message) use ($data) {
             $message->to($data['user']->email)
                 ->subject(trans('Email.invite_user', [
                     'name' => $data['inviter']->first_name . ' ' . $data['inviter']->last_name,

@@ -6,6 +6,8 @@ use Redirect;
 use App\Attendize\Utils;
 use App\Models\Account;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Hash;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
@@ -97,6 +99,64 @@ class UserSignupController extends Controller
 
         return redirect('login');
     }
+    
+    public function postSignupv2(Request $request)
+    {
+        $is_attendize = Utils::isAttendizeCloud();
+        $this->validate($request, [
+            'email'        => 'required|email|unique:users',
+            'password'     => 'required|min:8|confirmed',
+            'first_name'   => 'required',
+            'last_name'   => 'required',
+            'terms_agreed' => $is_attendize ? 'required' : ''
+        ]);
+
+        if (is_object($this->captchaService)) {
+            if (!$this->captchaService->isHuman($request)) {
+                return Redirect::back()
+                    ->with(['message' => trans("Controllers.incorrect_captcha"), 'failed' => true])
+                    ->withInput();
+            }
+        }
+        /*
+        $account_data = $request->only(['email', 'first_name', 'last_name']);
+        $account_data['currency_id'] = config('attendize.default_currency');
+        $account_data['timezone_id'] = config('attendize.default_timezone');
+        $account = Account::create($account_data);
+        */
+
+        $user = new User();
+        $user_data = $request->only(['email', 'first_name', 'last_name']);
+        $user_data['password'] = Hash::make($request->get('password'));
+        $user_data['account_id'] = 1;
+        $user_data['is_parent'] = 0;
+        $user_data['is_registered'] = 1;
+        $user_data['organiser_id']  = 0;
+        $user = User::create($user_data);
+
+        //assign non super admin user a default role `user`
+        // $manageEvents = Permission::findByName('manage events', 'web');
+        $assignedRole = Role::findByName('user');
+        $user->assignRole($assignedRole);
+        $user->givePermissionTo($user->getAllPermissions());
+        //Signup user acts as the admin of thier organisers and can manage events of the organiser
+        // $user->givePermissionTo($manageEvents);
+
+        if ($is_attendize) {
+            // TODO: Do this async?
+            Mail::send('en.Emails.ConfirmEmail',
+                ['first_name' => $user->first_name, 'confirmation_code' => $user->confirmation_code],
+                function ($message) use ($request) {
+                    $message->to($request->get('email'), $request->get('first_name'))
+                        ->subject(trans("Email.attendize_register"));
+                });
+        }
+
+        session()->flash('message', 'Success! You can now login.');
+
+        return redirect()->route('showCreateOrganiser');
+    }
+
 
     /**
      * Confirm a user email
@@ -115,7 +175,7 @@ class UserSignupController extends Controller
         }
 
         $user->is_confirmed = 1;
-        $user->confirmation_code = null;
+        $user->confirmation_code = $confirmation_code;
         $user->save();
 
         session()->flash('message', trans("Controllers.confirmation_successful"));

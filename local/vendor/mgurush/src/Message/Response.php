@@ -11,27 +11,32 @@ use Omnipay\Common\Message\RedirectResponseInterface;
  */
 class Response extends AbstractResponse implements RedirectResponseInterface
 {
-    public function __construct(RequestInterface $request, $data, $redirectUrl)
+    public function __construct(RequestInterface $request, $data, $headers)
     {
         $this->request = $request;
-        $this->data = $data;
-        $this->redirectUrl = $redirectUrl;
+        $this->data = json_decode($data,true);
+        $this->headers = $headers;
     }
 
     public function isSuccessful()
     {
-        return false;
+        return isset($this->data['status']['StatusCode']) && 0 === $this->data['status']['StatusCode'];
     }
 
     public function isRedirect()
     {
-        return true;
+        return false;
     }
 
-  /*  public function isTransparentRedirect()
+    public function getTransactionReference()
     {
-        return true;
-    } */
+        return isset($this->data['message']['"txnRefNumber":']) ? $this->data['message']['"txnRefNumber":'] : null;
+    }
+
+    public function getMessage()
+    {
+        return isset($this->data['message']['requestSource']) ? $this->data['message']['requestSource'] : null;
+    }
 
     public function getRedirectUrl()
     {

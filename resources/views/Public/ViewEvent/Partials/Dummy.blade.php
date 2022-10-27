@@ -4,7 +4,7 @@
                 <div class="form-group">
                     {!! Form::label('card-number', trans("Public_ViewEvent.card_number")) !!}
                     <input required="required" type="text" autocomplete="off" placeholder="**** **** **** ****"
-                           class="form-control card-number" size="20" data="number">
+                           class="form-control card-number" name="cn" size="20" data="number">
                 </div>
             </div>
         </div>
@@ -32,12 +32,9 @@
             <div class="col-md-12">
                 <div class="form-group">
                     {!! Form::label('card-expiry-year', trans("Public_ViewEvent.cvc_number")) !!}
-                    <input required="required" placeholder="***" class="form-control card-cvc" data="cvc">
+                    <input required="required" placeholder="***" class="form-control card-cvc" data="cvc" name="cvc">
                 </div>
             </div>
         </div>
 
-        {!! Form::token() !!}
-
-        <input class="btn btn-lg btn-success card-submit" style="width:100%;" type="submit" value="@lang("Public_ViewEvent.complete_payment")">
     </div>

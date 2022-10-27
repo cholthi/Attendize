@@ -108,6 +108,7 @@ Order Email: <strong>{{$order->email}}</strong><br>
     </table>
     <br><br>
 </div>
+<small style="padding: 0.1em;background-color: #fcf8e3;margin-top:2px">Ticketana is not the organiser of this event, but provides a platform for hosting it. We assist organisers with running a smooth event, but if it is curtailed or not on time, please be aware that the responsibility to deliver the event is that of the organiser</small>
 <br><br>
 Thank you
 @stop

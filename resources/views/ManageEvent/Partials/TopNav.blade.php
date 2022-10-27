@@ -7,7 +7,7 @@
         </style>
         <div class="alert alert-warning top_of_page_alert">
             {{ @trans("ManageEvent.event_not_live") }}
-            <a href="{{ route('MakeEventLive', ['event_id' => $event->id]) }}">{{ @trans("ManageEvent.publish_it") }}</a>
+            <a href="{{ route('MakeEventLive', ['event_id' => $event->id]) }}" class="btn btn-primary">{{ @trans("ManageEvent.publish_it") }}</a>
         </div>
     @endif
 @stop

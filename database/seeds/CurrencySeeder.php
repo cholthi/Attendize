@@ -515,6 +515,20 @@ class CurrencySeeder extends Seeder
                 'created_at' => '2015-07-22 23:25:30',
                 'updated_at' => '2015-07-22 23:25:30',
             ],
+            [
+                'id' => 37,
+                'title' => 'South Sudanese Pounds',
+                'symbol_left' => '',
+                'symbol_right' => ' ',
+                'code' => 'SSP',
+                'decimal_place' => 2,
+                'value' => 620.00,
+                'decimal_point' => '.',
+                'thousand_point' => ',',
+                'status' => 1,
+                'created_at' => '2015-07-22 23:25:30',
+                'updated_at' => '2015-07-22 23:25:30',
+            ],
         ];
 
         collect($currencies)->map(function($currency) {

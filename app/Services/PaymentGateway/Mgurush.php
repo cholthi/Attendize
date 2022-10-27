@@ -11,20 +11,24 @@ class Mgurush
 
     private $gateway;
 
-    private $extra_params = [];
+    private $extra_params = ['phone'];
 
-    public function __construct($gateway)
+    public function __construct($gateway, $config)
     {
         $this->gateway = $gateway;
-        $this->options = [];
+        $this->options['access_key'] = $config['access_key'];
+        $this->options['secret_key'] = $config['secret_key'];
     }
 
     private function createTransactionData($order_total, $order_email, $event)
     {
         $this->transaction_data = [
-            'order_id' => $order_email,
-            'tnxRefNumber' => $order_email,
-            'callback' => ""
+            'txnRefNumber' => $order_email,
+            'currency' => 'SSP',
+            'mobileNumber' => $this->options['phone'],
+            'amount'   => $order_total,
+            'access_key' => $this->options['access_key'],
+            'secret_key' => $this->options['secret_key']
         ];
 
         return $this->transaction_data;

@@ -22,9 +22,11 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return array(
-            'partnerCode' => '2122',
-            'order_id'    => '',
+            'currency' => 'SSP',
+            'amount'    => '',
             'tnxRefNumber' => '',
+            'access_key'   => '',
+            'secret_key'   => '',
             'testMode' => true,
         );
     }
@@ -52,24 +54,44 @@ class Gateway extends AbstractGateway
     }
 
 
-    public function getPartnerCode()
+    public function getCurrency()
     {
-        return $this->getParameter('partnerCode');
+        return $this->getParameter('currency');
     }
 
-    public function setPartnerCode($value)
+    public function setCurrency($value)
     {
-        return $this->setParameter('partnerCode', $value);
+        return $this->setParameter('currency', $value);
     }
 
-    public function getOrderId()
+    public function getAccessKey()
     {
-        return $this->getParameter('order_id');
+        return $this->getParameter('access_key');
     }
 
-    public function setOrderId($value)
+    public function setAccessKey($value)
     {
-        return $this->setParameter('order_id', $value);
+        return $this->setParameter('access_key', $value);
+    }
+
+    public function getSecretKey()
+    {
+        return $this->getParameter('secret_key');
+    }
+
+    public function setSecretKey($value)
+    {
+        return $this->setParameter('secret_key', $value);
+    }
+
+    public function getAmount()
+    {
+        return $this->getParameter('amount');
+    }
+
+    public function setAmount($value)
+    {
+        return $this->setParameter('amount', $value);
     }
 
     public function getTnxRefNumber()
