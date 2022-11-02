@@ -1,0 +1,88 @@
+<?php
+
+namespace App\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Log;
+use App\Models\Order;
+
+class CheckMgurushPaymentStatus implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+
+  public $tries = 3;
+  public $backoff = 1;
+  protected $endpoint  =  'https://uat.mgurush.com/irh/ecomTxn/getTxnStatus';
+  protected  $order;
+
+ /**
+  * Create a new job instance.
+  *
+  * @return void
+  */
+
+    public function __construct($order)
+    {
+        Log::info("Checking payment status for order with txnRefNumber: #" . $order->order_reference);
+       $this->order = $order;
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
+    {
+     $payment_config = $this->order->account->getGateway($this->order->payment_gateway_id);
+      $client = new \GuzzleHttp\Client();
+
+    $data = [
+      'txnRefNumber' => $this->order->transaction_id
+     ];
+
+     $headers = [
+       'Content-Type' => 'application/json',
+       'access_key'   => $payment_config->config['accessKey'],
+       'Hmac'        =>  $this->getHash($data, $payment_config->config['secretKey'])
+      ];
+
+     $response  = $client->request('POST', $this->endpoint, ['body'=> json_encode($data), 'headers'=>$headers]);
+     if($response->getStatusCode() === 200)
+        {
+         $decoded = json_decode($response->getBody()->getContents(), true);
+         //dd($decoded);
+         $payment_success = $decoded['status']['statusCode'] == 0 ? true : false;
+
+        if(!$payment_success)
+           {
+            Log::info("Mgurush payment failed: ".$decoded['status']['messageDescription']);
+            throw new Exception("Mgurush Payment Failed: ".$decoded['status']['messageDescription']);
+           }
+           //payment successded change the order status
+          Order::where('order_reference', $this->order->order_reference)
+          ->update([
+                   'is_payment_received' => 1,
+                   'order_status_id' => config('attendize.order.complete'),
+                   'transaction_id'  => $decoded['status']['tnxId']
+               ]);
+        }
+    }
+
+  private function getHash($data, $secret)
+   {
+
+     $encoded = json_encode($data);
+     $raw = hash_hmac('sha256',$encoded, $secret, true);
+
+      $hash = base64_encode($raw);
+
+      return $hash;
+
+   }
+}

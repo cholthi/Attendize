@@ -210,7 +210,7 @@ class EventCheckoutController extends Controller
         $paymentGateway = $activeAccountPaymentGateway ? $activeAccountPaymentGateway->payment_gateway : false;
         //$all_paymentGateways = PaymentGateway::get();
 
-        //precrate order_reference
+        //precreate order_reference
         $order_reference = $this->getOrderReference();
 
         /*
@@ -493,6 +493,7 @@ class EventCheckoutController extends Controller
           }
 
           $paymentGateway = $activeAccountPaymentGateway ? $activeAccountPaymentGateway->payment_gateway : false;
+          session()->put('ticket_order_' . $event_id . '.payment_gateway', $paymentGateway);
         }
 
         $order_requires_payment = $ticket_order['order_requires_payment'];
@@ -648,9 +649,9 @@ class EventCheckoutController extends Controller
                 $order->transaction_id = $ticket_order['transaction_id'][0];
             }
 
-            if (isset($session_order_data['transaction_id'])) {
+           /* if (isset($session_order_data['transaction_id'])) {
                 $order->transaction_id = $session_order_data['transaction_id'];
-            }
+            }*/
 
             if (isset($ticket_order['transaction_data'][0]['payment_intent'])) {
                 $order->payment_intent = $ticket_order['transaction_data'][0]['payment_intent'];
@@ -663,14 +664,14 @@ class EventCheckoutController extends Controller
             $order->order_reference = $ticket_order['order_reference'];
             $order->last_name = sanitise($request_data['order_last_name']);
             $order->email = sanitise($request_data['order_email']);
-            $order->order_status_id = isset($request_data['pay_offline']) ? config('attendize.order.awaiting_payment') : config('attendize.order.complete');
+            $order->order_status_id = isset($request_data['pay_offline']) || $ticket_order['payment_gateway']->name == 'Mgurush' ? config('attendize.order.awaiting_payment') : config('attendize.order.complete');
             $order->amount = $ticket_order['order_total'];
             $order->booking_fee = $ticket_order['booking_fee'];
             $order->organiser_booking_fee = $ticket_order['organiser_booking_fee'];
             $order->discount = 0.00;
             $order->account_id = $event->account->id;
             $order->event_id = $ticket_order['event_id'];
-            $order->is_payment_received = isset($request_data['pay_offline']) ? 0 : 1;
+            $order->is_payment_received = isset($request_data['pay_offline']) || $ticket_order['payment_gateway']->name == 'Mgurush' ? 0 : 1;
 
             // Business details is selected, we need to save the business details
             if (isset($request_data['is_business']) && (bool)$request_data['is_business']) {

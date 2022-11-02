@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\OrderCompletedEvent;
+use App\Jobs\CheckMgurushPaymentStatus;
 use App\Jobs\GenerateTicket;
 use App\Jobs\SendOrderNotification;
 use App\Jobs\SendOrderTickets;
@@ -40,6 +41,7 @@ class OrderCompletedListener implements ShouldQueue
          */
         Log::info('Begin Processing Order: ' . $event->order->order_reference);
         ProcessGenerateAndSendTickets::withChain([
+            new CheckMgurushPaymentStatus($event->order),
             new GenerateTicket($event->order->order_reference),
             new SendOrderTickets($event->order)
         ])->dispatch();

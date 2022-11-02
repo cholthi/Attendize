@@ -31,7 +31,7 @@ class HomePageController extends Controller
        } else {
                $upcoming_events = Event::with(['organiser', 'currency'])->where([
             ['end_date', '>=', now()],
-            ['is_live', 1]->paginate();
+            ['is_live', 1]])->paginate();
          }
      
       if($searchQuery) {
@@ -44,9 +44,9 @@ class HomePageController extends Controller
                         ->orWhere('location', 'like', $searchQuery . '%');
                 })->paginate();
         } else {
-             $upcoming_events = Event::with(['organiser', 'currency'])->where([
+             $past_events = Event::with(['organiser', 'currency'])->where([
             ['end_date', '>=', now()],
-            ['is_live', 1]->paginate();
+            ['is_live', 1]])->paginate();
          }
 
 
@@ -56,7 +56,7 @@ class HomePageController extends Controller
             'past_events'     => $past_events,
         ];
 
-        return view('Public.ViewOrganiser.OrganiserPage', $data);
+        return view('Public.HomePage.Home', $data);
     }
 
- 
+}

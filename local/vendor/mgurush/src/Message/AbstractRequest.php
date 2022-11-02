@@ -9,8 +9,8 @@ use Omnipay\Common\Message\RequestInterface;
  */
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
-    protected $liveEndpoint = 'https://app.mgurush.com/irh//ecomTxn/betting';
-    protected $testEndpoint = 'https://uat.mgurush.com/irh//ecomTxn/betting';
+    protected $liveEndpoint = 'https://app.mgurush.com/irh/ecomTxn/betting';
+    protected $testEndpoint = 'https://uat.mgurush.com/irh/ecomTxn/betting';
     protected $endpoint = '';
 
     public function getHeaders()
@@ -30,9 +30,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
      $headers = $this->getHeaders();
      $body = json_encode($data) ;
-
+   //dd($body,$this->getEndPoint(),$headers);
     $httpResponse = $this->httpClient->request($this->getHttpMethod(), $this->getEndpoint(), $headers, $body);
-        return $this->response = new Response($this, $data, $headers);
+  //dd($httpResponse->getBody()->getContents());
+        return $this->response = new Response($this, $httpResponse->getBody()->getContents(), $headers);
     }
 
     public function getCurrency()
@@ -44,6 +45,17 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('currency', $value);
     }
+
+    public function getPartnerCode()
+    {
+        return $this->getParameter('partnerCode');
+    }
+
+    public function setPartnerCode($value)
+    {
+        return $this->setParameter('partnerCode', $value);
+    }
+
 
     public function getAccessKey()
     {
@@ -73,6 +85,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setAmount($value)
     {
         return $this->setParameter('amount', $value);
+    }
+
+   public function getMobileNumber()
+    {
+        return $this->getParameter('mobile_number');
+    }
+
+    public function setMobileNumber($value)
+    {
+        return $this->setParameter('mobile_number', $value);
     }
 
     public function getTnxRefNumber()
@@ -113,8 +135,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
          'currency'     => $this->getCurrency(),
          'txnRefNumber' => $this->getTnxRefNumber()
        ];
-     $encoded = json_encode($param);
-     $raw = hash_hmac('sha256',$encoded, $secret, true);
+     $encoded = json_encode($params);
+     $raw = hash_hmac('sha256',$encoded, $this->getSecretKey(), true);
 
       $hash = base64_encode($raw);
 

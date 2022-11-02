@@ -18,7 +18,6 @@
     <div class="well">
         {!! Markdown::convertToHtml($event->offline_payment_instructions) !!}
     </div>
-    <input class="btn btn-lg btn-success card-submit" style="width:100%;" type="submit" value="Complete Order">
 </div>
 <style>
     .offline_payment_toggle {

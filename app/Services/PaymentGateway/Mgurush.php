@@ -16,8 +16,8 @@ class Mgurush
     public function __construct($gateway, $config)
     {
         $this->gateway = $gateway;
-        $this->options['access_key'] = $config['access_key'];
-        $this->options['secret_key'] = $config['secret_key'];
+        $this->options['access_key'] = $config['accessKey'];
+        $this->options['secret_key'] = $config['secretKey'];
     }
 
     private function createTransactionData($order_total, $order_email, $event)
@@ -71,9 +71,9 @@ class Mgurush
     {
 
         $request = $this->gateway->refund([
-            'transactionReference' => $order->transaction_id,
+            'txnRefNumber' => $order->transaction_id,
             'amount' => $refund_amount,
-            'refundApplicationFee' => $refund_application_fee
+            'order_id' => $order->order_reference
         ]);
 
         $response = $request->send();

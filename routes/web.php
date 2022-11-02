@@ -39,6 +39,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserLogoutController;
 use App\Http\Controllers\UserSignupController;
+use App\Http\Controllers\HomePageController;
 
 Route::group(
     [
@@ -50,6 +51,9 @@ Route::group(
       Route::get('payments/callback',
           [EventCheckoutController::class, 'mgurushNotifications']
       )->name('paymentCallbacks');
+
+    Route::get('home',
+      [HomePageController::class, 'showEventsHomePage'])->name('home');
 
 /*Terms and conditions route
      */

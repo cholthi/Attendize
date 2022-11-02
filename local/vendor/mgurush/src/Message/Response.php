@@ -20,7 +20,7 @@ class Response extends AbstractResponse implements RedirectResponseInterface
 
     public function isSuccessful()
     {
-        return isset($this->data['status']['StatusCode']) && 0 === $this->data['status']['StatusCode'];
+        return isset($this->data['status']['statusCode']) && $this->data['status']['statusCode'] === 0;
     }
 
     public function isRedirect()
@@ -30,12 +30,13 @@ class Response extends AbstractResponse implements RedirectResponseInterface
 
     public function getTransactionReference()
     {
-        return isset($this->data['message']['"txnRefNumber":']) ? $this->data['message']['"txnRefNumber":'] : null;
+        return isset($this->data['message']['txnRefNumber']) ? $this->data['message']['txnRefNumber'] : null;
     }
 
     public function getMessage()
     {
-        return isset($this->data['message']['requestSource']) ? $this->data['message']['requestSource'] : null;
+        $message =  ($this->data['status']['statusCode'] === 0) ? "Mgurush payment Successeful" : "Mgurush: ".$this->data['status']['messageDescription'];
+        return $message;
     }
 
     public function getRedirectUrl()

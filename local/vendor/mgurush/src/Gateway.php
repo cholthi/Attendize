@@ -24,6 +24,7 @@ class Gateway extends AbstractGateway
         return array(
             'currency' => 'SSP',
             'amount'    => '',
+            'partnerCode' => '1041',
             'tnxRefNumber' => '',
             'access_key'   => '',
             'secret_key'   => '',
@@ -52,6 +53,17 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\Mgurush\Message\CompletePurchaseRequest', $parameters);
     }
+
+  /**
+     *
+     * @param array $parameters
+     * @return \Omnipay\Cybersource\Message\RefundRequest
+     */
+    public function refund(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Mgurush\Message\RefundRequest', $parameters);
+    }
+
 
 
     public function getCurrency()
