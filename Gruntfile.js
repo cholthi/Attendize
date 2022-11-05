@@ -1,3 +1,4 @@
+
 module.exports = function (grunt) {
     //Initializing the configuration object
     grunt.initConfig({
@@ -16,6 +17,19 @@ module.exports = function (grunt) {
             },
 
         },
+      
+        sass: {                              // Task
+            dist: {                            // Target
+              options: {                       // Target options
+                style: 'expanded',
+                loadPath: 'node_modules',
+              },
+
+              files: {                         // Dictionary of files
+                "./public/assets/stylesheet/main.css": "./public/assets/stylesheet/scss/main.scss",
+              }
+            }
+          },
         concat: {
             options: {
                 separator: ';',
@@ -73,10 +87,11 @@ module.exports = function (grunt) {
         },
         watch: {
             scripts: {
-                files: ['./public/assets/**/*.js'],
-                tasks: ['default'],
+                files: ['./public/assets/stylesheet/scss/**/*.scss'],
+                tasks: ['sass'],
                 options: {
                     spawn: false,
+                    livereload: true,
                 },
             },
         }
@@ -85,11 +100,13 @@ module.exports = function (grunt) {
     // Plugin loading
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    
     // Task definition
-    grunt.registerTask('default', ['less', 'concat']);
-    grunt.registerTask('deploy', ['less', 'concat', 'uglify']);
+    grunt.registerTask('default', ['sass', 'concat']);
+    grunt.registerTask('deploy', ['less', 'sass', 'concat', 'uglify']);
     grunt.registerTask('js', ['concat']);
     grunt.registerTask('styles', ['concat']);
     grunt.registerTask('minify', ['uglify']);

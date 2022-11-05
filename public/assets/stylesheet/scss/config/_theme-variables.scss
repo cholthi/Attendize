@@ -1,0 +1,1105 @@
+/// ========================
+// Variables
+// ========================
+
+$root-path:                                                    "../";
+
+// ========================
+// Color System
+// ========================
+$white:                                                       #fff !default;
+$gray-100:                                                    #F0F3F5 !default;
+$gray-200:                                                    #EDF1F3;
+$gray-300:                                                    #D8D8D9 !default;
+$gray-400:                                                    #9CA3AF !default;
+$gray-500:                                                    #636365 !default;
+$gray-600:                                                    #4B5563 !default;
+$gray-700:                                                    #374151 !default;
+$gray-800:                                                    #1F2937 !default;
+$gray-900:                                                    #111827 !default;
+$black:                                                       #000000 !default;
+$transparent:                                                 transparent !default;
+
+$grays: (
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900
+) !default;
+
+// Colors
+$blue:                                                        #004789;
+$yellow:                                                      #ffd44d !default;
+$black:                                                       #000000 !default;
+$dark:                                                        $gray-900 !default;
+$purple:                                                      #5b2be0 !default;
+$indigo:                                                      #4f46e5 !default;
+$teal:                                                        #22d3ee !default;
+$green:                                                       #187958 !default;
+$red:                                                         #dc3545 !default;
+$navy:                                                        #1d253d !default;
+
+// Social color
+$facebook:                                                    #3b5998 !default;
+$google:                                                      #d14130 !default;
+$twitter:                                                     #1da1f2 !default;
+$linkedin:                                                    #3b5998 !default;
+$instagram:                                                   #3f729b !default;
+$github:                                                      #24292e !default;
+$youtube:                                                     #ed302f !default;
+$vimeo:                                                       #00adef !default;
+$linkedin:                                                    #0082ca !default;
+$pinterest:                                                   #c61118 !default;
+$telegram:                                                    #269dd8 !default;
+$vk:                                                          #4c75a3 !default;
+
+// Default theme color 
+$primary-color:                                              #39489F;
+$accent-color:                                               $yellow !default;
+$secondary-color:                                            #FF4620;
+
+// Primary level color
+$primary-50:                                                  tint-color($primary-color, 96%) !default;
+$primary-100:                                                 tint-color($primary-color, 80%) !default;
+$primary-200:                                                 tint-color($primary-color, 60%) !default;
+$primary-300:                                                 tint-color($primary-color, 40%) !default;
+$primary-400:                                                 tint-color($primary-color, 20%) !default;
+$primary-500:                                                 $primary-color !default;
+$primary-600:                                                 shade-color($primary-color, 20%) !default;
+$primary-700:                                                 shade-color($primary-color, 40%) !default;
+$primary-800:                                                 shade-color($primary-color, 60%) !default;
+$primary-850:                                                 shade-color($primary-color, 70%) !default;
+$primary-900:                                                 shade-color($primary-color, 80%) !default;
+
+// Secondary level color
+$secondary-50:                                                tint-color($secondary-color, 96%) !default;
+$secondary-100:                                               tint-color($secondary-color, 80%) !default;
+$secondary-200:                                               tint-color($secondary-color, 60%) !default;
+$secondary-300:                                               tint-color($secondary-color, 40%) !default;
+$secondary-400:                                               tint-color($secondary-color, 20%) !default;
+$secondary-500:                                               $secondary-color !default;
+$secondary-600:                                               shade-color($secondary-color, 20%) !default;
+$secondary-700:                                               shade-color($secondary-color, 40%) !default;
+$secondary-800:                                               shade-color($secondary-color, 60%) !default;
+$secondary-900:                                               shade-color($secondary-color, 80%) !default;
+
+// Theme Colors
+$primary:                                                     $primary-color !default;
+$secondary:                                                   $secondary-color !default;
+$warning:                                                     $accent-color !default;
+$light:                                                       $gray-200;
+$success:                                                     $green !default;
+$info:                                                        $teal !default;
+$danger:                                                      $red !default;
+
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  "primary":                                                  $primary,
+  "secondary":                                                $secondary,
+  "success":                                                  $success,
+  "info":                                                     $info,
+  "warning":                                                  $warning,
+  "danger":                                                   $danger,
+  "light":                                                    $light,
+), $theme-colors);
+
+// Social Network Colors
+$social-network-colors: () !default;
+$social-network-colors: map-merge((
+"facebook":                                                   $facebook,
+"google":                                                     $google,
+"twitter":                                                    $twitter,
+"instagram":                                                  $instagram,
+"github":                                                     $github
+), $social-network-colors);
+
+// body color
+$heading-color:                                               $gray-900 !default;
+$body-color:                                                  $primary;
+
+// Links
+$link-color:                                                  $primary !default;
+$link-color-hover:                                            $primary-600 !default;
+$link-hover-decoration:                                       none !default;
+
+// border color
+$border-color:                                                $gray-300;
+$btn-focus-box-shadow:                                        inherit !default;
+$btn-active-box-shadow:                                       inherit !default;
+
+// Text Muted
+$text-muted:                                                  $gray-500 !default;
+
+// Link Muted
+$link-muted-color:                                            $primary-400 !default;
+$link-muted-hover-color:                                      $primary !default;
+$card-border-color:                                           $gray-200 !default;
+
+// Options
+$enable-negative-margins:                                     true !default;
+$enable-smooth-scroll:                                        false !default;
+
+// Characters which are escaped by the escape-svg function
+$escaped-characters: (
+  ("<", "%3c"),
+  (">", "%3e"),
+  ("#", "%23"),
+  ("(", "%28"),
+  (")", "%29"),
+) !default;
+
+// ========================
+// Breakpoints
+// ========================
+$breakpoints: (
+  xs:                                                          0,
+  sm:                                                          768px,
+  md:                                                          992px,
+  lg:                                                          1200px,
+  xl:                                                          1600px
+) !default;
+
+$container-max-widths: (
+  sm: 720px,
+  md: 960px,
+  lg: 1140px,
+  xl: 1480px
+) !default;
+
+// ========================
+// Custom setup
+// ========================
+@import "./custom-variables";
+
+// ========================
+// Typography
+// ========================
+// Font Family
+$font-family-sans-serif:                                      "Gilroy", sans-serif !default;
+$font-primary:                                                "Gilroy", sans-serif !default;
+$font-accent:                                                 "DM Sans", sans-serif !default;
+
+// Font Sizes
+$font-size-base:                                              1rem !default;
+$h1-font-size:                                                $font-size-base * 2.5;
+$h2-font-size:                                                $font-size-base * 2.25;
+$h3-font-size:                                                $font-size-base * 2;
+$h4-font-size:                                                $font-size-base * 1.875;
+$h5-font-size:                                                $font-size-base * 1.5;
+$h6-font-size:                                                $font-size-base * 1.25;
+
+$headings-font-weight:                                        600 !default;
+
+$display1-size:                                               $font-size-base * 4.375 !default;
+$display2-size:                                               $font-size-base * 3.8125 !default;
+$display3-size:                                               $font-size-base * 3 !default;
+$display4-size:                                               $font-size-base * 2.8125 !default;
+$display5-size:                                               $font-size-base * 2.6875 !default;
+$display6-size:                                               $font-size-base * 2.5 !default;
+
+$display-font-weight:                                         400 !default;
+
+// display-headings for bootstrap 5
+$display-font-sizes: (
+  1: 4.375rem,
+  2: 3.8125rem,
+  3: 3rem,
+  4: 2.8125rem,
+  5: 2.6875rem,
+  6: 2.5rem
+) !default;
+
+// Accordion
+$accordion-button-focus-border-color:                          $card-border-color !default;
+$accordion-border-color:                                       $card-border-color !default;
+$accordion-button-active-bg:                                   $white !default;
+
+// Font Weight
+$font-weight-light:                                           300 !default;
+$font-weight-normal:                                          400 !default;
+$font-weight-medium:                                          500 !default;
+$font-weight-semi-bold:                                       600 !default;
+$font-weight-bold:                                            700 !default;
+$font-weight-800:                                             800 !default;
+$font-weight-900:                                             900 !default;
+$display-weight:                                              300 !default;
+$lead-font-size:                                        $font-size-base * 1.125 !default;
+
+$small-font-size:                                             .8em !default;
+
+$line-height-base:                                            1.3 !default;
+$headings-font-weight:                                        $font-weight-medium !default;
+$headings-line-height:                                        1.3 !default;
+$display-line-height:                                         1.3 !default;
+$paragraph-line-height:                                       1.6 !default;
+$outline:                                                     5px auto -webkit-focus-ring-color !default;
+$hr-color:                                                    $gray-200 !default;
+
+// ========================
+// Spacing
+// ========================
+$content-space-y:                                             $font-size-base * 6.25 !default;
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge((
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 4.5),
+  7: ($spacer * 6),
+  8: ($spacer * 9),
+  9: ($spacer * 12)
+), $spacers);
+
+
+// ========================
+// Box Shadow
+// ========================
+$box-shadow-inset:                                             inset 0 1px 2px rgba($primary-700, .075) !default;
+$box-shadow-sm:                                                0 .15rem 1.25rem 0 rgba($primary-700, 0.1) !default;
+$box-shadow:                                                   0 .3rem 1.8rem 0 rgba($primary-700, 0.2) !default;
+$box-shadow-lg:                                                0 .4rem 2.2rem 0 rgba($primary-700, 0.3) !default;
+$box-shadow-bottom:                                            0 8px 6px -6px rgba($primary-700, 0.3) !default;
+$box-shadow-right-bottom:                                      2px 2px 2px rgba($primary-700, 0.3) !default;
+
+$collapse-shadow:                                              0 .1rem .1rem 0 $primary-200 !default;
+
+$breadcrumb-item-padding:                                      0;
+
+// list padding y
+$list-group-item-padding-y:                                   $font-size-base * 1.5 !default;
+
+// ========================
+// Image Thumbnails
+// ========================
+$thumbnail-border-color:                                      $gray-200 !default;
+
+// ========================
+// Pagination
+// ========================
+// Colors
+$pagination-color:                                            $body-color !default;
+
+// Border
+$pagination-border-color:                                     $gray-200 !default;
+
+// Hover
+$pagination-hover-color:                                      $white !default;
+$pagination-hover-bg:                                         $primary !default;
+$pagination-hover-border-color:                               $primary !default;
+
+// Active
+$pagination-active-color:                                     $white !default;
+$pagination-active-bg:                                        $primary !default;
+$pagination-active-border-color:                              $primary !default;
+
+
+// ========================
+// Border
+// ========================
+$border-radius-sm:                                            0;
+$border-radius:                                               2px;
+$border-radius-lg:                                            0;
+$border-radius-pill:                                          $font-size-base * 3.25 !default;
+$border-radius-circle:                                        50% !default;
+
+// border width
+$border-one:                                                  1px !default;
+$border-two:                                                  2px !default;
+$border-three:                                                3px !default;
+$border-four:                                                 4px !default;
+$border-five:                                                 5px !default;
+
+$border-smooth:                                               rgba($light, .1) !default;
+$border-smooth-light:                                         rgba($dark, .1) !default;
+
+// ========================
+// hr divider
+// ========================
+$hr-divider-border-width:                                     1px !default;
+$hr-divider-max-width:                                        $font-size-base * 3.25 !default;
+$hr-divider-height:                                           $font-size-base * .125 !default;
+$hr-divider-double-height:                                    $font-size-base * .25 !default;
+$hr-divider-double-max-width:                                 $font-size-base * 7 !default;
+
+// ========================
+// Buttons
+// ========================
+// Default Spacing
+$input-btn-padding-y:                                         $font-size-base * .5 !default;
+$input-btn-padding-x:                                         $font-size-base * 1.1 !default;
+$lead-margin-bottom:                                          $font-size-base * .5 !default;
+$btn-app-min-width:                                           $font-size-base * 11.5625 !default;
+
+// Spacing
+$input-btn-padding-y-sm:                                      $font-size-base * .5 !default;
+$input-btn-padding-x-sm:                                      $font-size-base * 1.25 !default;
+
+$input-btn-padding-y-lg:                                      $font-size-base !default;
+$input-btn-padding-x-lg:                                      $font-size-base * 2.5 !default;
+
+// Focus Width
+$input-btn-focus-width:                                       0 !default;
+
+// play button 
+$play-btn-line-height:                                        $font-size-base * 3.625 !default;
+$play-btn-height:                                             $font-size-base * 3.625 !default;
+$play-btn-width:                                              $font-size-base * 3.625 !default;
+$play-btn-color:                                              $white !default;
+$play-btn-font-size:                                          $font-size-base * 3.75 !default;
+
+// ========================
+// Forms
+// ========================
+// Color
+$input-color:                                                 $gray-700 !default;
+$input-group-addon-color:                                     $gray-700 !default;
+$form-feedback-invalid-color:                                 #FD0202;
+
+// Border Radius
+$input-border-radius:                                         2px;
+$input-border-radius-lg:                                      0;
+$form-check-input-border-radius:                              0;
+
+// Width
+$form-check-input-width:                                      1.125em;
+$input-border-width:                                          1px;
+
+// Border Colors
+$form-border-color:                                           $gray-200 !default;
+$input-border-color:                                          #6060624F;
+$input-focus-border-color:                                    $primary-400 !default;
+
+// Background Colors
+$input-group-addon-bg:                                        transparent !default;
+$form-check-input-checked-bg-color:                           $secondary;
+
+// margin
+$form-group-margin-bottom:                                    $font-size-base * 1.5 !default;
+$contact-item-margin-bottom:                                  $font-size-base * 1.5 !default; 
+
+// Focus Colors
+$input-focus-color:                                           $gray-700 !default;
+$input-placeholder-color:                                     $gray-500 !default;
+
+$input-padding-y-lg:                                          .75rem;
+$input-padding-x-lg:                                          1.5rem;
+
+// ========================
+// Forms Icon
+// ========================
+$form-icon-color:                                             $gray-700 !default;
+
+// Forms States (e.g. Disabled)
+$form-label-color-disabled:                                   $text-muted !default;
+$custom-control-indicator-disabled-bg:                        $gray-200 !default;
+
+// ========================
+// Form Toggles
+// ========================
+// Unchecked (Off)
+$form-toggle-color:                                            $gray-400 !default;
+$form-toggle-border-color:                                     $gray-200 !default;
+$form-toggle-circle-bg-color:                                  $gray-300 !default;
+
+// Checked (On)
+$form-toggle-color-checked:                                    $white !default;
+$form-toggle-bg-color-checked:                                 $primary !default;
+$form-toggle-border-color-checked:                             $primary !default;
+$form-toggle-circle-bg-color-checked:                          $white !default;
+
+// Disabled
+$form-toggle-color-disabled:                                   $gray-400 !default;
+$form-toggle-border-color-disabled:                            $gray-200 !default;
+$form-toggle-circle-bg-color-disabled:                         $gray-300 !default;
+
+// Disabled + Checked (On)
+$form-toggle-bg-color-disabled-checked:                        $gray-400 !default;
+$form-toggle-border-color-disabled-checked:                    $gray-200 !default;
+
+// ========================
+// Close
+// ========================
+$close-font-size:                                              $font-size-base * 2 !default;
+$close-font-weight:                                            $font-weight-light !default;
+$close-color:                                                  $gray-700 !default;
+$close-text-shadow:                                            none !default;
+
+// ========================
+// Alert
+// ========================
+// Spacing
+$alert-padding-y:                                              $font-size-base !default;
+$alert-padding-x:                                              $font-size-base * 1.25 !default;
+$alert-border-width:                                           0 !default;
+
+// ========================
+// Progress Bars
+// ========================
+$progress-bg:                                                 $gray-300 !default;
+
+// ========================
+// List Groups
+// ========================
+$list-group-border-color:                                     $gray-200 !default;
+$list-group-hover-bg:                                         $light !default;
+
+// ========================
+// Blockquote
+// ========================
+// Spacing
+$blockquote-padding-y:                                        $font-size-base * 1.5 !default;
+$blockquote-padding-x:                                        $font-size-base * 1.25 !default;
+
+// Background Color
+$blockquote-bg:                                               $light !default;
+
+// Border Color
+$blockquote-border-color:                                     $primary !default;
+
+// Content
+$blockquote-small-color:                                      $gray-600 !default;
+$blockquote-font-size:                                        $font-size-base * 1.25 !default;
+$blockquote-font-weight:                                      $font-weight-light !default;
+
+// ========================
+// Card
+// ========================
+$card-cap-bg:                                                 $light !default;
+$card-border-color:                                           $gray-200 !default;
+$p-blog-card :                                                $font-size-base * 2 !default;
+$card-spacer-y:                                               $font-size-base * 1.25 !default;
+$card-spacer-x:                                               $font-size-base * 1.25 !default;
+
+// ========================
+// Modals
+// ========================
+// Background Color
+$modal-backdrop-bg:                                           $dark !default;
+$modal-backdrop-opacity:                                      .1 !default;
+
+// Border Color
+$modal-content-border-color:                                  $gray-200 !default;
+
+
+// Sizes
+$modal-lg:                                                    $font-size-base * 50 !default;
+$modal-md:                                                    $font-size-base * 31.25 !default;
+$modal-sm:                                                    $font-size-base * 21.875 !default;
+
+// ========================
+// Popovers
+// ========================
+// Background Color
+$popover-header-bg:                                           $light !default;
+
+// Border Color
+$popover-border-color:                                        $gray-200 !default;
+
+// ========================
+// Navbar
+// ========================
+$one-navbar-padding-y:                       1.25rem !default;
+$one-navitem-padding-y:                      1.5rem !default;
+$one-navlink-padding-y:                      1.2rem !default;
+$one-navlink-padding-x:                      1.25rem !default;
+
+$navbar-toggler-shadow:                    none !default;
+$navbar-toggler-padding-x:                 .25rem !default;
+$logo-brand-max-height:                    2.5rem !default;
+
+$header-height:                                               89px !default;
+$nav-link-padding-y:                                          $font-size-base * .75 !default;
+$nav-link-padding-x:                                          $font-size-base * 1.5 !default;
+$navbar-padding-y:                                            0 !default;
+$navbar-padding-x:                                            0 !default;
+$navbar-nav-link-padding-x:                                   $font-size-base * 1.2 !default;
+
+// mobile navbar
+$mobile-navbar-collapse-padding-x:                            1.5rem !default;
+$mobile-navbar-margin-top:                                    1.5rem !default;
+$mobile-navbar-brand-padding-x:                               1rem !default;
+$mobile-navbar-toggler-end:                                   1rem !default;
+$mobile-navbar-toggler-rounded:                               .5rem !default;
+$mobile-toggler-after-end:                                    1rem !default;
+
+// color 
+$navbar-light-color:                                          $gray-700 !default;
+$navbar-light-hover-color:                                    $primary !default;
+$navbar-light-active-color:                                   $primary !default;
+$navbar-light-toggler-border-color:                           $transparent !default;
+
+// navbar scolled
+$navbar-scrolled-bg-dark:                                     $secondary !default;
+$navbar-scrolled-bg-light:                                    $white !default;
+
+$dropdown-link-color:                                         $gray-700 !default;
+$dropdown-link-active-color:                                  $primary !default;
+$dropdown-link-hover-color:                                   $primary !default;
+$dropdown-link-hover-bg:                                      transparent !default;
+
+$dropdown-dark-link-hover-color:                              $white !default;
+$dropdown-dark-link-hover-bg:                                 transparent !default;
+
+$dropdown-md-padding-x:                    .625rem !default;
+$dropdown-menu-box-shadow:                 0 0.4rem 2.2rem 0 rgba(27,30,36,.1) !default;
+$dropdown-md-area-padding:                 1.25rem !default;
+$dropdown-md-padding-x:                    .625rem !default;
+$dropdown-md-margin-y:                     .625rem !default;
+$dropdown-md-item-border-radius:           .5rem !default;
+$dropdown-md-item-padding-x:               .625rem !default;
+$dropdown-md-sm-min-width:                 28rem !default;
+$dropdown-md-lg-min-width:                 38rem !default;
+$dropdown-lg-sm-min-width:                 38rem !default; 
+$dropdown-lg-lg-min-width:                 52rem !default;
+
+$dropdown-menu-border-color:               #f8f8ff !default;
+
+$drop-margin-end:                          .75rem !default;
+$drop-padding-top:                         .35rem !default;
+$drop-padding-end:                         .75rem !default;
+$drop-padding-bottom:                      .5rem !default;
+
+$dropdown-m-toggle-after-top:              1rem !default;
+$dropdown-m-toggle-after-right:            1.25rem !default;
+
+// Dark Mode Colors
+$navbar-dark-color:                                           $primary-50 !default;
+$navbar-dark-active-color:                                    $white !default;
+$navbar-dark-hover-color:                                     $white !default;
+$navbar-dark-toggler-border-color:                            $transparent !default;
+
+// dropdown chevron
+$chevron-down-light: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><polyline points='112 184 256 328 400 184' fill='none' stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='48px'/></svg>") !default;
+
+$chevron-down-light-hover: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><polyline points='112 184 256 328 400 184' fill='none' stroke='#{$navbar-light-hover-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='48px'/></svg>") !default;
+
+$chevron-down-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><polyline points='112 184 256 328 400 184' fill='none' stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='48px'/></svg>") !default;
+
+$chevron-down-dark-hover: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><polyline points='112 184 256 328 400 184' fill='none' stroke='#{$navbar-dark-hover-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='48px'/></svg>") !default;
+
+$navbar-dark-toggler-icon-bg-active: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><line x1='368' y1='368' x2='144' y2='144' fill='none' stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='32px'/><line x1='368' y1='144' x2='144' y2='368' fill='none' stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='32px'/></svg>") !default;
+
+$navbar-light-toggler-icon-bg-active: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><line x1='368' y1='368' x2='144' y2='144' fill='none' stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='32px'/><line x1='368' y1='144' x2='144' y2='368' fill='none' stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='32px'/></svg>") !default;
+
+// Onscroll
+$navbar-bg-onscroll:                                          $primary-400 !default;
+
+// progress if scroll down
+$progress-scroll-bg:                                          rgba($white, .5) !default;
+$progress-1-height:                                           2px !default;
+$progress-2-height:                                           4px !default;
+$progress-3-height:                                           5px !default;
+$progress-scroll-color:                                       $primary !default;
+$progress-bg-value:                                           $primary !default;
+
+$navbar-before-height:                                        2px !default;
+$navbar-before1-width:                                        $font-size-base * 1.6 !default;
+$navbar-before-bottom:                                        $font-size-base * 1.25 !default;
+
+// ========================
+// Drop Down
+// ========================
+$dropdown-link-active-bg:                                     transparent !default;
+$dropdown-link-hover-bg:                                      $light !default;
+$dropdown-border-color:                                       $gray-200 !default;
+$dropdown-menu-md-min-width:                                  $font-size-base * 21 !default;
+
+
+// dropdown menu container and contents.
+$dropdown-item-padding-y:                                     $font-size-base * .5 !default;
+$dropdown-item-padding-x:                                     $font-size-base * 1.5 !default;
+$dropdown-item-font-size:                                     $font-size-base * .9375 !default;
+$dropdown-min-width:                                          $font-size-base * 12.5 !default;
+$dropdown-box-shadow:                                         0 .4rem 2.2rem 0 $primary-100 !default;
+
+// dropdown submenu
+$dropdown-item-hover:                                         $primary !default;
+$dropdown-toggle-after:                                       1.2rem !default;
+$dropdown-dark-bg:                                            rgba($dark, .85) !default;
+
+$dropdown-submenu-top:                                        $font-size-base * -.675 !default;
+$dropdown-submenu-left:                                       100% !default;
+$dropdown-submenu-margin-left:                                0 !default;
+$dropdown-submenu-margin-right:                               0 !default;
+$dropdown-submenu-mobile-left:                                $font-size-base * .2 !default;
+$dropdown-submenu-mobile-margin-left:                         $font-size-base * 1.5 !default;
+
+$toggle-mobile-left-after:                                    auto !default;
+$toggle-mobile-right-after:                                   $font-size-base * 1.2 !default;
+
+$mobile-navlink-right:                                        $font-size-base !default;
+$mobile-navlink-left:                                         $font-size-base !default;
+$mobile-navlink-left2:                                        0 !default;
+
+// ========================
+// Footer
+// ========================
+$footer-dark-color:                                           $gray-300 !default;
+$footer-dark-hover-color:                                     $white !default;
+
+$footer-light-color:                                          $navbar-light-color !default;
+$footer-light-hover-color:                                    $primary !default;
+$footer-nav-margin-bottom:                                    $font-size-base !default;
+$footer-nav-a-padding-y:                                      $font-size-base !default;
+
+
+$widget-content-padding-bottom:                               $font-size-base * .5 !default;
+
+$before-arrow-width:                                          $font-size-base * .6 !default;
+$before-arrow-height:                                         $font-size-base * .6 !default;
+$before-arrow-size:                                           $font-size-base * .6 !default;
+$before-arrow-margin-right:                                   $font-size-base * .6 !default;
+
+// ========================
+// Font
+// ========================
+$font-a-size:                                                 $font-size-base * .8 !default;
+$font-a-margin-right:                                         $font-size-base * .8 !default;
+$font-a-margin-left:                                          $font-size-base * .4 !default;
+
+// transform
+$rotate-n90:                                                  rotate(-90deg) !default;
+$rotate-90:                                                   rotate(90deg) !default;
+$rotate-180:                                                  rotate(180deg) !default;
+
+// ========================
+// SVG Icons
+// ========================
+$dropdown-toggle-svg-after-width:                             $font-size-base * .8 !default;
+$dropdown-toggle-svg-after-height:                            $font-size-base * .8 !default;
+$dropdown-toggle-svg-after-background-size:                   .8rem .8rem !default;
+
+$rtl-content-review: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 270.000000 270.000000'><g transform='translate(0.000000,270.000000) scale(0.100000,-0.100000)' fill='#{$primary}' stroke='none'><path d='M400 1700 l0 -370 180 0 180 0 0 -45 c0 -116 -47 -250 -123 -347 -36 -47 -159 -129 -238 -158 -33 -13 -58 -26 -57 -30 2 -4 34 -73 72 -153 l69 -145 48 19 c276 108 474 303 553 545 42 130 48 195 53 632 l5 422 -371 0 -371 0 0 -370z'/><path d='M1660 1700 l0 -370 180 0 180 0 0 -34 c0 -69 -31 -193 -65 -262 -47 -96 -129 -172 -247 -230 -49 -23 -93 -44 -99 -46 -5 -2 22 -71 62 -155 l72 -151 79 33 c243 103 439 298 513 512 51 145 57 209 62 656 l5 417 -371 0 -371 0 0 -370z'/></g></svg>") !default;
+
+$ltr-content-review: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 270.000000 270.000000'><g transform='translate(0.000000,270.000000) scale(0.100000,-0.100000)' fill='#{$primary}' stroke='none'><path d='M920 2182 c-290 -124 -482 -341 -540 -610 -30 -140 -40 -296 -40 -644 l0 -328 370 0 370 0 0 370 0 370 -181 0 -181 0 7 63 c26 243 129 387 342 477 35 15 66 29 69 32 7 7 -132 298 -143 298 -4 0 -37 -13 -73 -28z'/><path d='M2179 2186 c-249 -103 -442 -295 -520 -516 -50 -142 -61 -247 -66 -677 l-5 -393 371 0 371 0 0 370 0 370 -181 0 -181 0 7 53 c21 170 67 281 150 363 51 49 143 107 215 134 19 7 39 17 44 21 10 9 -124 298 -139 298 -5 0 -35 -10 -66 -23z'/></g></svg>") !default;
+
+$rtl-content2-review: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 270.000000 270.000000'><g transform='translate(0.000000,270.000000) scale(0.100000,-0.100000)' fill='#{$primary}' stroke='none'><path d='M920 2182 c-290 -124 -482 -341 -540 -610 -30 -140 -40 -296 -40 -644 l0 -328 370 0 370 0 0 370 0 370 -181 0 -181 0 7 63 c26 243 129 387 342 477 35 15 66 29 69 32 7 7 -132 298 -143 298 -4 0 -37 -13 -73 -28z'/><path d='M2179 2186 c-249 -103 -442 -295 -520 -516 -50 -142 -61 -247 -66 -677 l-5 -393 371 0 371 0 0 370 0 370 -181 0 -181 0 7 53 c21 170 67 281 150 363 51 49 143 107 215 134 19 7 39 17 44 21 10 9 -124 298 -139 298 -5 0 -35 -10 -66 -23z'/></g></svg>") !default;
+
+$ltr-content2-review: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 270.000000 270.000000'><g transform='translate(0.000000,270.000000) scale(0.100000,-0.100000)' fill='#{$primary}' stroke='none'><path d='M400 1700 l0 -370 180 0 180 0 0 -45 c0 -116 -47 -250 -123 -347 -36 -47 -159 -129 -238 -158 -33 -13 -58 -26 -57 -30 2 -4 34 -73 72 -153 l69 -145 48 19 c276 108 474 303 553 545 42 130 48 195 53 632 l5 422 -371 0 -371 0 0 -370z'/><path d='M1660 1700 l0 -370 180 0 180 0 0 -34 c0 -69 -31 -193 -65 -262 -47 -96 -129 -172 -247 -230 -49 -23 -93 -44 -99 -46 -5 -2 22 -71 62 -155 l72 -151 79 33 c243 103 439 298 513 512 51 145 57 209 62 656 l5 417 -371 0 -371 0 0 -370z'/></g></svg>") !default;
+
+$before-arrow-light: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><polyline points='112 184 256 328 400 184' fill='none' stroke='#{$footer-light-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='48px'/></svg>") !default;
+
+$before-arrow-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><polyline points='112 184 256 328 400 184' fill='none' stroke='#{$footer-dark-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='48px'/></svg>") !default;
+
+$brand-filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale") !default;
+
+$brand-filter-hover: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0'/></filter></svg>#grayscale");
+
+// ========================
+// Nav Tabs
+// ========================
+// Active Color
+$nav-tabs-link-active-color:                                  $dark !default;
+
+// Border Color
+$nav-tabs-border-color:                                       $gray-200 !default;
+
+
+// ========================
+// maps widget
+// ========================
+$maps-padding-bottom:                                         75% !default;
+
+// ========================
+// back to top
+// ========================
+$backtotop-transition-1:                                      opacity .3s 0s, visibility 0s .3s !default;
+$backtotop-transition-2:                                      opacity .3s 0s, visibility 0s 0s !default;
+$backtotop-no-touch:                                          $primary !default;
+
+// ========================
+// badge
+// ========================
+$badge-padding-x:                                            .75em;
+
+// ========================
+// button
+// ========================
+$btn-circle-width:                                               $font-size-base * 3.5 !default;
+$btn-circle-width:                                               $font-size-base * 3.5 !default;
+
+$btn-circle-width-lg:                                            $font-size-base * 5 !default;
+$btn-circle-width-lg:                                            $font-size-base * 5 !default;
+
+$btn-circle-width-sm:                                            $font-size-base * 2 !default;
+$btn-circle-width-sm:                                            $font-size-base * 2 !default;
+
+// ========================
+// opacity
+// ========================
+$opacity-1:                                                   1 !default;
+$opacity-08:                                                 .8 !default;
+$opacity-0:                                                   0 !default;
+
+// ========================
+// avatar
+// ========================
+$avatar-xs-width:                                             $font-size-base * 1.5625 !default;
+$avatar-xs-height:                                            $font-size-base * 1.5625 !default;
+$avatar-sm-width:                                             $font-size-base * 3.125 !default;
+$avatar-sm-height:                                            $font-size-base * 3.125 !default;
+$avatar-md-width:                                             $font-size-base * 4.6875 !default;
+$avatar-md-height:                                            $font-size-base * 4.6875 !default;
+$avatar-lg-width:                                             $font-size-base * 6.25 !default;
+$avatar-lg-height:                                            $font-size-base * 6.25 !default;
+$avatar-xl-width:                                             $font-size-base * 10 !default;
+$avatar-xl-height:                                            $font-size-base * 10 !default;
+
+$avatar-group-margin-right:  -1.5rem !default;
+$avatar-group-margin-hover-top:  -.5rem !default;
+
+// ========================
+// mobile menu
+// ========================
+$mobile-menu-transition:                                      all 0.5s ease !default;
+$mobile-menu-a-padding-y:                                     .625rem !default;
+$mobile-menu-a-padding-x:                                     1rem !default;
+$mobile-menu-width:                                           $font-size-base * 17.5 !default;
+$mobile-menu-padding:                                         $font-size-base * 1 !default;
+
+$mobile-push-transition:                                      all 0.5s ease !default;
+$mobile-push-left:                                            $font-size-base * -17.5 !default;
+$mobile-push-right:                                           $font-size-base * -17.5 !default;
+
+$mobile-before-open-color:                                    rgba($black, .6) !default;
+$mobile-backmenu-open-color:                                  $white !default;
+$mobile-before-padding:                                       0 !default;
+
+$backmenu-left-open:                                          $font-size-base * 17.5 !default;
+$backmenu-right-open:                                         $font-size-base * 17.5 !default;
+$backmenu-open-padding:                                       $font-size-base !default;
+$backmenu-social-top:                                         $font-size-base !default;
+
+$sidenav-margin-bottom:                                       $font-size-base !default;
+$menu-mobile-a:                                               $font-size-base * .875 !default;
+$sidenav-level1-p-left:                                       $font-size-base * .5 !default;
+$sidenav-level2-p-left:                                       $font-size-base !default;
+
+$sidebar-link-font-size:                                      $font-size-base * 1 !default;
+$sidebar-link-padding:                                        .5rem 0 !default;
+
+$color_fonts:                                                 $gray-700 !default;
+
+// ========================
+// five grid
+// ========================
+$min-height-grid:                                             1px !default;
+$padding-right-grid:                                          15px !default;
+$padding-left-grid:                                           15px !default;
+
+// ========================
+// Post
+// ========================
+$post-content-img-bottom:                                     $font-size-base !default;
+$figure-caption-font-size:                                    $font-size-base * .875 !default;
+$figure-caption-font-style:                                   italic !default;
+$figure-caption-line-height:                                  $font-size-base !default;
+$figure-caption-padding:                                      8px 0 !default;
+
+$post-content-color:                                          #666 !default;
+$post-content-font-size:                                      $font-size-base * 1.125 !default;
+$post-content-p-line-height:                                  $font-size-base * 1.7 !default;
+$post-content-p-margin-bottom:                                $font-size-base * 1.5 !default;
+$post-content-padding-y:                                      $font-size-base * .5 !default;
+
+$post-blockquote-p-margin-left:                               $font-size-base * 3.5 !default;
+$post-blockquote-width:                                       $font-size-base * 2 !default;
+$post-blockquote-height:                                      $font-size-base * 2 !default;
+$pagination-circle-margin-right:                              $font-size-base !default;
+
+// ========================
+// align
+// ========================
+$align-left-margin-right:                                     $font-size-base * 2 !default;
+$align-left-margin-top:                                       4px !default;
+$align-right-margin-left:                                     $font-size-base * 2 !default;
+$align-right-margin-top:                                      4px !default;
+
+// ========================
+// blog
+// ========================
+$blog-author-right:                                           $font-size-base !default;
+$blog-margin-top:                                             $font-size-base * -4.5 !default;
+$blog-post-date-width:                                        $font-size-base * 3.5 !default;
+$blog-post-date-font-size:                                    $font-size-base * 1.5 !default;
+
+// ========================
+// collage images
+// ========================
+$collage-img-border-width:                                    3px !default;
+$collage-img-child1-transform:                                rotateZ(15deg) !default;
+$collage-img-child1-top:                                      $font-size-base * -1 !default;
+$collage-img-child1-hover-transform:                          rotateZ(20deg) !default;
+$collage-img-child2-hover-transform:                          rotateZ(5deg) !default;
+$collage-img-child3-transform:                                rotateZ(-10deg) !default;
+$collage-img-child3-hover-transform:                          rotateZ(-5deg) !default;
+$collage-img-child3-bottom:                                   $font-size-base * -2.1 !default;
+$collage-img-child4-transform:                                rotateZ(-20deg) !default;
+$collage-img-child4-hover-transform:                          rotateZ(-15deg) !default;
+$collage-img-child4-bottom:                                   $font-size-base * -4.4 !default;
+$collage-img-child5-transform:                                rotateZ(-30deg) !default;
+$collage-img-child5-hover-transform:                          rotateZ(-25deg) !default;
+$collage-img-child5-bottom:                                   $font-size-base * -6.8 !default;
+
+// collage 2
+$collage-img-child21-transform:                               rotateZ(-15deg) !default;
+$collage-img-child21-hover-transform:                         rotateZ(-20deg) !default;
+$collage-img-child22-hover-transform:                         rotateZ(-5deg) !default;
+$collage-img-child23-transform:                               rotateZ(10deg) !default;
+$collage-img-child23-hover-transform:                         rotateZ(5deg) !default;
+$collage-img-child24-transform:                               rotateZ(20deg) !default;
+$collage-img-child24-hover-transform:                         rotateZ(15deg) !default;
+$collage-img-child25-transform:                               rotateZ(30deg) !default;
+$collage-img-child25-hover-transform:                         rotateZ(25deg) !default;
+
+
+// ========================
+// comment
+// ========================
+$comment-list-top:                                            $font-size-base * 2 !default;
+$comment-article-p-bottom:                                    $font-size-base !default;
+$subcomment-margin-left:                                      $font-size-base * 6 !default;
+$sub-subcomment-margin-left:                                  $font-size-base * 6 !default;
+$sub-subcomment-mobile-margin-left:                           0 !default;
+$comment-p:                                                   0 !default;
+$contact-icon-margin-top:                                     $font-size-base * .5 !default;
+$contact-icon-font-size:                                      $font-size-base * 2 !default;
+
+// ========================
+// Kit
+// ========================
+$masthead-bottom:                                             $font-size-base * 2 !default;
+$mouse-icon-width:                                            3px !default;
+$mouse-icon-height:                                           $font-size-base * 1.5 !default;
+$mouse-icon-padding:                                          .55rem .75rem !default;
+$mouse-icon-border-radius:                                    $font-size-base * 1.5 !default;
+$mouse-scroller-width:                                        3px !default;
+$mouse-scroller-height:                                       $font-size-base * .6 !default;
+$showcase-img-min-height:                                     $font-size-base * 20 !default;
+
+// ========================
+// Portfolio
+// ========================
+$portfolio-nav-font-size:                                     $font-size-base * .71429 !default;
+$portfolio-nav-margin:                                        0 4px !default;
+$bg-portfolio:                                                rgba($primary-700, .7) !default;
+$portfolio-item-info-height:                                  $font-size-base * 3.75 !default;
+$portfolio-item-info-2-3-border:                              rgba($light, .8) !default;
+$portfolio-item-info-2-3-space:                               $font-size-base * .5 !default;
+
+// ========================
+// Pricing
+// ========================
+$pricing-border-width:                                        1px!default;
+$pricing-subhead-margin-bottom:                               $font-size-base * .5 !default;
+$pricing-subhead-color:                                       tint-color($primary-800, 4) !default;
+$pricing-margin-bottom:                                       $font-size-base !default;
+$pricing-margin-top:                                          $font-size-base !default;
+
+$pricing-form-switch-margin-bottom:                           $font-size-base * 1.25 !default;
+$pricing-form-switch-width:                                   $font-size-base * 6.25 !default;
+$pricing-form-switch-height:                                  $font-size-base * 1.875 !default;
+$pricing-form-switch-border-radius:                           $font-size-base * .9375 !default;
+$pricing-form-switch-after-width:                             $font-size-base * 2.5 !default;
+$pricing-form-switch-after-height:                            $font-size-base * 1.375 !default;
+
+// ========================
+// Process
+// ========================
+$process-border-width:                                        1px !default;
+$process-vertical-bottom:                                     $font-size-base * .5 !default;
+$process-vertical-content-margin:                             $font-size-base !default;
+
+$process-icon-width:                                          $font-size-base * 4 !default;
+$process-icon-bg-width:                                       $font-size-base * 3 !default;
+$process-icon-bg-height:                                      $font-size-base * 3 !default;
+$process-icon-font-size:                                      $font-size-base * 1.3 !default;
+$process-icon-before-top:                                     $font-size-base * 3 !default;
+$process-icon-before-bottom:                                  $font-size-base * -2 !default;
+
+$process-horizontal-li-font-size:                             $font-size-base * 1.25 !default;
+$process-horizontal-before-width:                             $font-size-base * 1.875 !default;
+$process-horizontal-before-height:                            $font-size-base * 1.875 !default;
+$process-horizontal-before-line-height:                       $font-size-base * 1.875 !default;
+$process-horizontal-before-margin:                            0 auto 10px auto !default;
+$process-horizontal-after-top:                                $font-size-base * 1.5 !default;
+$process-horizontal-i-font-size:                              $font-size-base * 1.5625 !default;
+
+// ========================
+// Progress
+// ========================
+$progress-vertical-background-color:                          $primary-100 !default;
+$progress-vertical-height:                                    $font-size-base * 12.5 !default;
+$progress-vertical-before-padding:                            1px 0px !default;
+$progress-vertical-before-font-size:                          $font-size-base * .9375 !default;
+$progress-vertical-before-border-radius:                      $font-size-base * 1.5625 !default;
+$progress-vertical-before-width:                              $font-size-base * 1.25 !default;
+$progress-vertical-before-margin:                             0 auto !default;
+$progress-vertical-value-font-size:                           $font-size-base * .9375 !default;
+
+// progress bar
+$progress-area-height:                                        $font-size-base * 1.125 !default;
+$progress-area-background:                                    $primary-100 !default;
+$progress-area-border-radius:                                 $font-size-base * 1.875 !default;
+
+$progress-bar-height:                                         $font-size-base * 1.125 !default;
+$progress-bar-background:                                     $primary !default;
+$progress-bar-border-radius:                                  $font-size-base * 1.875 !default;
+
+$progress-bar-before-padding:                                 1px 0px !default;
+$progress-bar-before-font-size:                               $font-size-base * .9375 !default;
+$progress-bar-before-border-radius:                           $font-size-base * 1.5625 !default;
+$progress-bar-before-width:                                   $font-size-base * 1.25 !default;
+
+// ========================
+// Reviews
+// ========================
+$reviews-padding:                                             $font-size-base * 1.875 !default;
+$reviews-padding-left:                                        $font-size-base * 3.75 !default;
+$reviews-thumb-width:                                         $font-size-base * 3.75 !default;
+$reviews-thumb-height:                                        $font-size-base * 3.75 !default;
+
+$reviews-before-top:                                          $font-size-base !default;
+$reviews-before-left:                                         $font-size-base !default;
+$reviews-before-opacity:                                      .8 !default;
+$reviews-after-border-width:                                  $font-size-base * 1.875 !default;
+$reviews-after-left:                                          $font-size-base * 3.75 !default;
+$reviews-after-bottom:                                        $font-size-base * -1.875 !default;
+$reviews-two-after-border-width:                              $font-size-base * 1.875 !default;
+$thumb-minus-margin-top:                                      $font-size-base * -2 !default;
+$thumb-minus-margin-left:                                     $font-size-base * 2 !default;
+$thumb-left-minus-margin-top:                                 $font-size-base * -1.875 !default;
+$reviews-two-after-left:                                      $font-size-base * 1.25 !default;
+$reviews-two-after-top:                                       $font-size-base * -3.75 !default;
+$reviews-four-after-right:                                    $font-size-base * 2 !default;
+$reviews-four-after-bottom:                                   $font-size-base * 1 !default;
+
+$reviews-five-margin-left:                                    $font-size-base * 1.875 !default;
+$reviews-five-padding-left:                                   $font-size-base * 4 !default;
+
+$ratings-li-margin:                                           0 10px 0 0 !default;
+$ratings-li-stroke:                                           $warning !default;
+$ratings-li-color:                                            $warning !default;
+
+// ========================
+// Ribbon
+// ========================
+$ribbon-before-after-border-width:                            3px !default;
+$ribbon-lg-size:                                              $font-size-base * 1.25 !default;
+$ribbon-lg-width:                                             $font-size-base * 15.625 !default;
+$ribbon-lg-height:                                            $font-size-base * 15.625 !default;
+$ribbon-lg-top:                                               -6px !default;
+$ribbon-lg-span-line-height:                                  $font-size-base * 3.125 !default;
+$ribbon-lg-span-width:                                        $font-size-base * 12.5 !default;
+$ribbon-lg-span-top:                                          $font-size-base * 1.875 !default;
+$ribbon-lg-ribbon-left:                                       $font-size-base * -.6875 !default;
+$ribbon-lg-ribbon-span-left:                                  $font-size-base * -2.5 !default;
+$ribbon-lg-ribbon-right:                                      $font-size-base * -.6875 !default;
+$ribbon-lg-ribbon-span-right:                                 $font-size-base * -2.5 !default;
+
+$ribbon-md-size:                                              $font-size-base * .875 !default;
+$ribbon-md-width:                                             $font-size-base * 9.375 !default;
+$ribbon-md-height:                                            $font-size-base * 9.375 !default;
+$ribbon-md-top:                                               -5px !default;
+$ribbon-md-span-line-height:                                  $font-size-base * 1.875 !default;
+$ribbon-md-span-width:                                        $font-size-base * 9.375 !default;
+$ribbon-md-span-top:                                          $font-size-base * 1.75 !default;
+$ribbon-md-ribbon-left:                                       -7px !default;
+$ribbon-md-ribbon-span-left:                                  $font-size-base * -1.875 !default;
+$ribbon-md-ribbon-right:                                      -7px !default;
+$ribbon-md-ribbon-span-right:                                 $font-size-base * -1.875 !default;
+
+$ribbon-sm-size:                                              $font-size-base * .75 !default;
+$ribbon-sm-width:                                             $font-size-base * 6.25 !default;
+$ribbon-sm-height:                                            $font-size-base * 6.25 !default;
+$ribbon-sm-top:                                               -5px !default;
+$ribbon-sm-span-line-height:                                  $font-size-base * 1.25 !default;
+$ribbon-sm-span-width:                                        $font-size-base * 6.25 !default;
+$ribbon-sm-span-top:                                          $font-size-base * 1.1875 !default;
+$ribbon-sm-ribbon-left:                                       -6px !default;
+$ribbon-sm-ribbon-span-left:                                  $font-size-base * -1.25 !default;
+$ribbon-sm-ribbon-right:                                      -6px !default;
+$ribbon-sm-ribbon-span-right:                                 $font-size-base * -1.25 !default;
+
+// ========================
+// Service
+// ========================
+
+$four-service-icon-top:                                       $font-size-base * 1.2 !default;
+$four-service-icon-right:                                     $font-size-base * 2.5 !default;
+$four-service-icon-max-width:                                 $font-size-base * 6.25 !default;
+$four-service-icon-i-font-size:                               $font-size-base * 3 !default;
+$four-service-icon-i-line-height:                             $font-size-base * 4.0625 !default;
+
+$four-service-content-padding-right:                          $font-size-base * 2.75 !default;
+$four-service-line-width:                                     $font-size-base * 6.25 !default;
+$four-service-line-height:                                    2px !default;
+$four-service-line-margin-top:                                $font-size-base * .9375 !default;
+$four-service-line-margin-bottom:                             5px !default;
+
+$four-service-line-after-width:                               $font-size-base * 4.375 !default;
+$four-service-line-after-height:                              2px !default;
+$four-service-line-after-bottom:                              $font-size-base * -.625 !default;
+
+// five service 
+$five-service-icon-font-size:                                 $font-size-base * 2 !default;
+$five-service-width:                                          $font-size-base * 4.25 !default;
+$five-service-height:                                         $font-size-base * 4.25 !default;
+$five-service-padding-top:                                    $font-size-base !default;
+$five-service-top:                                            $font-size-base * -1.875 !default;
+
+$five-service-readmore-width:                                 $font-size-base * 2.5 !default;
+$five-service-readmore-height:                                $font-size-base * 2.5 !default;
+$five-service-readmore-line-height:                           $font-size-base * 2.375 !default;
+$five-service-readmore-border-width:                          1px !default;
+$five-service-readmore-font-size:                             $font-size-base * .875 !default;
+$five-service-readmore-color:                                 $gray-300 !default;
+$five-service-readmore-bottom:                                $font-size-base * -1.0625 !default;
+
+// features
+$three-features-padding-left:                                 $font-size-base * 5 !default;
+$three-features-margin-bottom:                                $font-size-base * 2.1875 !default;
+$three-features-icon-font-size:                               $font-size-base * 3 !default;
+$three-features-padding-top:                                  $font-size-base * .25 !default;
+$three-features-right-padding-left:                           0 !default;
+$three-features-right-padding-right:                          $font-size-base * 5 !default;
+
+// ========================
+// Team
+// ========================
+$team-info-content-padding:                                   $font-size-base !default;
+$team-info-content-margin-top:                                $font-size-base !default;
+$team-info-content-margin-right:                              $font-size-base * .5 !default;
+
+$team2-view-profile-height:                                   $font-size-base * 2.75 !default;
+$team2-view-profile-width:                                    $font-size-base * 2.75 !default;
+$team2-view-profile-font-size:                                $font-size-base !default;
+$team2-view-profile-padding:                                  $font-size-base * 1.125 !default;
+$team2-view-profile-border-radius:                            $font-size-base * 6.25 !default;
+
+$team3-padding:                                               1rem 2rem 0 !default;
+$team3-thumb-border-width:                                    3px !default;
+
+$team-social-padding:                                         .5rem 0 !default;
+$team-social-left:                                            $font-size-base !default;
+$team-social-right:                                           $font-size-base !default;
+$team-social-bottom:                                          $font-size-base !default;
+$team-social-li-margin-right:                                 $font-size-base !default;
+
+$team-info-social-font-size:                                  $font-size-base * 1.2 !default;
+$team-info-social-margin-right:                               $font-size-base !default;
+
+
+// config
+$enable-validation-icons:                                     false;
+$enable-caret:                                                false;

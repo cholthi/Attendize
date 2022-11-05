@@ -13,9 +13,9 @@
         <!--/JS-->
 
         <!--Style-->
-        {!! Html::style('vendor/bootstrap/dist/css/bootstrap.min.css') !!}
-        {!!Html::style('assets/stylesheet/style.css') !!}
-       {!!Html::style('assets/stylesheet/frontend.css') !!}
+        {!!Html::style('assets/stylesheet/main.css?v=3') !!}
+        {!!Html::style('assets/stylesheet/icons/iconfont/style.css?v=3') !!}
+        {!!Html::style('assets/stylesheet/style.css?v=3s') !!}
         <!--/Style-->
 
         @yield('head')

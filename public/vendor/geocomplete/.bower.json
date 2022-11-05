@@ -32,7 +32,7 @@
     "tag": "1.6.5",
     "commit": "c6bebe81bdc21d3ee56c05c31bf961123597cfce"
   },
-  "_source": "git://github.com/ubilabs/geocomplete.git",
+  "_source": "https://github.com/ubilabs/geocomplete.git",
   "_target": "~1.6.4",
   "_originalSource": "geocomplete"
 }

@@ -123,7 +123,7 @@ Route::group(
         )->name('showSignup');
 
         Route::post('/signup',
-            [UserSignupController::class, 'postSignupv2']);
+            [UserSignupController::class, 'postSignup']);
 
         /*
          * Confirm Email

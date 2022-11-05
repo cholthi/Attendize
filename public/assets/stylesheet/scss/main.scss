@@ -1,0 +1,51 @@
+/*----------------------------------------------------------------------
+  * Upgency - Bootstrap 5 Custom Template
+  * Copyright 2022 SNC Theme
+------------------------------------------------------------------------*/
+// Required
+@import "../../../../node_modules/bootstrap5/scss/functions";
+
+// Functions
+@import 'config/functions';
+
+// Any default variable overrides here
+@import "config/theme-variables";
+
+// Required
+@import "../../../../node_modules/bootstrap5/scss/variables";
+@import "../../../../node_modules/bootstrap5/scss/maps";
+
+// Required
+@import "../../../../node_modules/bootstrap5/scss/mixins";
+@import "../../../../node_modules/bootstrap5/scss/utilities";
+
+// Optional Bootstrap components here
+@import "../../../../node_modules/bootstrap5/scss/root";
+@import "../../../../node_modules/bootstrap5/scss/reboot";
+@import "../../../../node_modules/bootstrap5/scss/type";
+@import "../../../../node_modules/bootstrap5/scss/images";
+@import "../../../../node_modules/bootstrap5/scss/containers";
+@import "../../../../node_modules/bootstrap5/scss/grid";
+@import "../../../../node_modules/bootstrap5/scss/forms";
+@import "../../../../node_modules/bootstrap5/scss/buttons";
+@import "../../../../node_modules/bootstrap5/scss/transitions";
+@import "../../../../node_modules/bootstrap5/scss/dropdown";
+@import "../../../../node_modules/bootstrap5/scss/nav";
+@import "../../../../node_modules/bootstrap5/scss/navbar";
+@import "../../../../node_modules/bootstrap5/scss/breadcrumb";
+@import "../../../../node_modules/bootstrap5/scss/badge";
+@import "../../../../node_modules/bootstrap5/scss/alert";
+@import "../../../../node_modules/bootstrap5/scss/progress";
+@import "../../../../node_modules/bootstrap5/scss/list-group";
+@import "../../../../node_modules/bootstrap5/scss/close";
+@import "../../../../node_modules/bootstrap5/scss/spinners";
+@import "../../../../node_modules/bootstrap5/scss/offcanvas";
+@import "../../../../node_modules/bootstrap5/scss/tables";
+
+// Helpers
+@import "../../../../node_modules/bootstrap5/scss/helpers";
+
+// Utilities API
+@import "../../../../node_modules/bootstrap5/scss/utilities/api";
+
+@import "./components/buttons";
