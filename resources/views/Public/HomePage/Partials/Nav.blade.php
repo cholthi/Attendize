@@ -1,45 +1,41 @@
-<header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+<nav class="navbar navbar-expand-lg bg-white py-3">
 
-        <div class="container-fluid">
-          <div class="d-flex align-items-center position-relative">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center position-relative flex-grow-1">
 
-
-            <div class="site-logo">
-              <a href="index.html" class="text-black"><span class="text-primary">
-                <img style="width: 150px;" class="logo" alt="Ticketana" src="{{asset('assets/images/logo-dark.png')}}"/>
-              </a>
-            </div>
-            <form class="mb-0 mx-auto">
-              <input type="text" class="form-control" placeholder="Search" />
-            </form>
-            <div class="d-flex align-items-center ms-auto">
-              
-              <nav class="site-navigation text-right ms-auto" role="navigation">
-
-                <ul class="site-menu main-menu js-clone-nav ms-auto d-none d-lg-block">
-                  <li><a href="#home-section" class="nav-link">Home</a></li>
-                  <li><a href="#services-section" class="nav-link">Events</a></li>
-
-
-                  <li class="has-children">
-                    <a href="#about-section" class="nav-link">About Us <i class="ico-chevron-down ms-2"></i></a>
-                    <ul class="dropdown arrow-top">
-                      <li><a href="#team-section" class="nav-link">Team</a></li>
-                      <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
-                      <li><a href="#faq-section" class="nav-link">FAQ</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a href="#why-us-section" role="button" class="btn btn-outline-secondary">Create Event</a></li>
-
-                </ul>
-              </nav>
-
-            </div>
-
-            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
-
-          </div>
+      <div class="site-logo">
+        <a href="index.html" class="text-black"><span class="text-primary">
+            <img style="width: 150px;" class="logo" alt="Ticketana" src="{{asset('assets/images/logo-dark.png')}}" />
+        </a>
+      </div>
+      <form class="mb-0 mx-auto flex-grow-1 mw-600">
+        <div class="position-relative search-control-wrap">
+          <i class="input-icon ico-search"></i>
+          <input type="text" class="form-control form-control-lg main-search-input" placeholder="Search events" />
         </div>
+      </form>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse flex-grow-0" id="navbarNavDropdown">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Browse Events</a>
+          </li>
+          <li class="nav-item">
+            <a href="/sell-tickets" role="button" class="btn btn-outline-secondary">Sell Tickets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Login</a>
+          </li>
+        </ul>
+      </div>
 
-      </header>
+    </div>
+  </div>
+
+</nav>

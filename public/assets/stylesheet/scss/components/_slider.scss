@@ -1,0 +1,42 @@
+.slick-slider {
+    .slick-prev,
+    .slick-next {
+        position: absolute;
+        top: calc(50% - 0.75em);
+        border-width: 0;
+        padding: 0;
+        border-radius: 50px;
+        background: #000;
+        width: 1.5em;
+        height: 1.5em;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        opacity: 0.5;
+        transition: all 0.25s;
+        color: #fff;
+
+        &:before {
+            margin-top: -3px;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .slick-prev {
+        left: 0;
+    }
+
+    .slick-next {
+        right: 0;
+    }
+}
+
+.slick-slide img {
+    width: 100%;
+    height: auto;
+}

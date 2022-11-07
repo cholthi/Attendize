@@ -48,4 +48,11 @@
 // Utilities API
 @import "../../../../node_modules/bootstrap5/scss/utilities/api";
 
+@import "./modules/header";
+@import "./modules/footer";
+@import "./modules/event";
+
 @import "./components/buttons";
+@import "./components/slider";
+
+@import "./utils/utils";

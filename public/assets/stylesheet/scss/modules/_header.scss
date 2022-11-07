@@ -1,0 +1,22 @@
+.main-search-input {
+    background: #f2f2f2;
+    border: none;
+    font-size: 14px;
+}
+
+.search-control-wrap {
+    .input-icon {
+        position: absolute;
+        top: calc(50% - 8px);
+        left: 16px;
+        color: #616161;
+    }
+
+    .form-control {
+        padding-left: 44px;
+
+        &:focus {
+            border: 1px solid $light;
+        }
+    }
+}

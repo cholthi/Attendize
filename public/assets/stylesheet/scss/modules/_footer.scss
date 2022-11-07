@@ -1,0 +1,39 @@
+.footer-section {
+    background: #363E48;
+    color: #fff;
+}
+
+.footer-grid {
+    display: grid;
+    gap: 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.footer-links-title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.footer-link-item {
+    margin-bottom: 6px;
+}
+
+.footer-link {
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: 300;
+    line-height: 1;
+
+    &:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}

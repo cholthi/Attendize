@@ -1,40 +1,43 @@
 <html>
-    <head>
 
-        <title>@yield('title')</title>
+<head>
 
-        @include('Shared/Layouts/ViewJavascript')
+    <title>@yield('title')</title>
 
-        @include('Shared.Partials.GlobalMeta')
+    @include('Shared/Layouts/ViewJavascript')
 
-        <!--JS-->
-       {!! Html::script('vendor/jquery/dist/jquery.min.js') !!}
-       {!! Html::script('vendor/bootstrap/dist/js/bootstrap.min.js') !!}
-        <!--/JS-->
+    @include('Shared.Partials.GlobalMeta')
 
-        <!--Style-->
-        {!!Html::style('assets/stylesheet/main.css?v=3') !!}
-        {!!Html::style('assets/stylesheet/icons/iconfont/style.css?v=3') !!}
-        {!!Html::style('assets/stylesheet/style.css?v=3s') !!}
-        <!--/Style-->
+    <!--JS-->
+    {!! Html::script('vendor/jquery/dist/jquery.min.js') !!}
+    {!! Html::script('vendor/bootstrap/dist/js/bootstrap.min.js') !!}
+    <!--/JS-->
 
-        @yield('head')
+    <!--Style-->
+    {!!Html::style('assets/stylesheet/main.css?'.time()) !!}
+    {!!Html::style('assets/stylesheet/icons/iconfont/style.css?v=3s') !!}
+    {!!Html::style('assets/stylesheet/style.css?v=3s') !!}
+    <!--/Style-->
 
-    </head>
-    <body>
-      @include('Public.HomePage.Partials.Nav')
-        <section id="main" role="main">
-            <section class="container">
-                @yield('content')
-            </section>
+    @yield('head')
 
-        </section>
-        <div style="text-align: center; color: white" >
-        </div>
+</head>
 
-        @include("Shared.Partials.LangScript")
-        {!! Html::script('assets/javascript/main.js') !!}
-        {!!Html::script('assets/javascript/frontend.js')!!}
-    </body>
-    @include('Shared.Partials.GlobalFooterJS')
+<body>
+    @include('Public.HomePage.Partials.Nav')
+    <section id="main" role="main">
+
+        @yield('content')
+
+    </section>
+    <div style="text-align: center; color: white">
+    </div>
+
+    @include("Shared.Partials.LangScript")
+    {!! Html::script('assets/javascript/main.js') !!}
+    @include('Public.HomePage.Layouts.Footer')
+    @yield('footer')
+</body>
+@include('Shared.Partials.GlobalFooterJS')
+
 </html>
