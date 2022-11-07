@@ -5,7 +5,9 @@
     'events' => $upcoming_events
     ]
     )
+    <div class="row"></div>
 </div>
+
 <div class="bg-lighter p-4">
     @include('Public.ViewOrganiser.Partials.EventListingPanel',
     [
@@ -13,4 +15,5 @@
     'events' => $past_events
     ]
     )
+    <div class="row"></div>
 </div>
