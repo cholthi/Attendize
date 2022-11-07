@@ -31,39 +31,18 @@
                     
                 </ul>
             </div>
-            <div>
-                <h5 class="footer-links-title">Quicklinks</h5>
-                <ul class="footer-links list-unstyled mb-0">
-                    <li class="footer-link-item">
-                        <a href="#" class="footer-link">How It Works</a>
-                    </li>
-                    <li class="footer-link-item">
-                        <a href="#" class="footer-link">Pricing</a>
-                    </li>
-                    <li class="footer-link-item">
-                        <a href="#" class="footer-link">FAQ</a>
-                    </li>
-                    
-                </ul>
-            </div>
-            <div>
-                <h5 class="footer-links-title">Connect with us</h5>
-                <ul class="footer-links list-unstyled mb-0">
-                    <li class="footer-link-item">
-                        <a href="#" class="footer-link">Facebook</a>
-                    </li>
-                    <li class="footer-link-item">
-                        <a href="#" class="footer-link">Twitter</a>
-                    </li>
-                    <li class="footer-link-item">
-                        <a href="#" class="footer-link">Instagram</a>
-                    </li>
-                    <li class="footer-link-item">
-                        <a href="#" class="footer-link">Google+</a>
-                    </li>
-                </ul>
+           
+        </div>
+        <div class="py-2 fs-7 d-flex align-items-center">
+            <span class="fs-7">© 2022 Eventbrite</span>
+            <div class="footer-social d-flex align-items-center ms-auto gap-4">
+            <a href="">
+                <i class="ico-facebook me-1"></i> Facebook
+            </a>
+            <a href="">
+                <i class="ico-twitter me-1"></i> Twitter
+            </a>
             </div>
         </div>
-        <div class="py-2 fs-7">© 2022 Eventbrite</div>
     </div>
 </footer>

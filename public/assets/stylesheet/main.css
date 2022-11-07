@@ -11994,6 +11994,11 @@ textarea.form-control-lg {
   text-decoration: underline;
 }
 
+.footer-social a {
+  color: #fff;
+  text-decoration: none;
+}
+
 @media (max-width: 575.98px) {
   .footer-grid {
     grid-template-columns: 1fr;

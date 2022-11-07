@@ -32,6 +32,13 @@
     }
 }
 
+.footer-social {
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
 @include media-breakpoint-down(sm) {
     .footer-grid {
         grid-template-columns: 1fr;
