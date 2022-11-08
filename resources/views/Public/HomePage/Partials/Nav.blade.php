@@ -4,7 +4,7 @@
     <div class="d-flex align-items-center position-relative flex-grow-1">
 
       <div class="site-logo">
-        <a href="index.html" class="text-black"><span class="text-primary">
+        <a href="#" class="text-black"><span class="text-primary">
             <img style="width: 150px;" class="logo" alt="Ticketana" src="{{asset('assets/images/logo-dark.png')}}" />
         </a>
       </div>
@@ -21,16 +21,17 @@
       <div class="collapse navbar-collapse flex-grow-0" id="navbarNavDropdown">
         <ul class="navbar-nav align-items-center">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="#">How it works</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Browse Events</a>
           </li>
           <li class="nav-item">
-            <a href="/sell-tickets" role="button" class="btn btn-outline-secondary">Sell Tickets</a>
+            <a role="button" href="{{route('showSignup')}}" class="btn btn-outline-secondary"><i class="ico-ticket"></i>Sell Tickets</a>
+          </li>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="{{route('login')}}">Login</a>
           </li>
         </ul>
       </div>

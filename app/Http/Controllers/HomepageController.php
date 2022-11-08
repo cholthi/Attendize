@@ -18,7 +18,7 @@ class HomePageController extends Controller
     public function showEventsHomePage(Request $request)
     {
        $searchQuery = $request->get('q');
-       
+
        if($searchQuery) {
         $upcoming_events = Event::with(['organiser', 'currency'])->where([
             ['end_date', '>=', now()],
@@ -33,7 +33,7 @@ class HomePageController extends Controller
             ['end_date', '>=', now()],
             ['is_live', 1]])->paginate();
          }
-     
+
       if($searchQuery) {
         $past_events = Event::with(['organiser', 'currency'])->where([
             ['end_date', '<', now()],
@@ -45,16 +45,22 @@ class HomePageController extends Controller
                 })->paginate();
         } else {
              $past_events = Event::with(['organiser', 'currency'])->where([
-            ['end_date', '>=', now()],
+            ['end_date', '<=', now()],
             ['is_live', 1]])->paginate();
          }
-
+ // Get popular events according to the EventStat model
+ $popular_events = Event::where([['end_date', '<', now()]])->whereHas('stats',
+                               function ($query) {
+                               $query->orderByDesc('views');
+                    })->take(5);
 
         $data = [
             'is_embedded'     => 0,
             'upcoming_events' => $upcoming_events,
             'past_events'     => $past_events,
+            'popular_events'  => $popular_events,
         ];
+
 
         return view('Public.HomePage.Home', $data);
     }
