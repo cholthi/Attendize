@@ -9,7 +9,7 @@
     <section class="container py-4 py-sm-5">
         <div class="row">
             <aside class="col-md-3">
-              {!! Form::open(['url' => route('showCreateEvent'),'method'=>'get']) !!}}
+              {!! Form::open(['url' => route('showCreateEvent'),'method'=>'get']) !!}
                 <div class="filter-wrap border p-4">
                     <div class="d-flex align-items-start mb-3">
                         <div class="text-uppercase text-light">

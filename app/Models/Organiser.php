@@ -78,6 +78,16 @@ class Organiser extends MyBaseModel implements AuthenticatableContract
         return $this->hasMany(\App\Models\Event::class);
     }
 
+     /**
+     * The bank_detail associated with the organizer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function bank_detail()
+    {
+        return $this->hasOne(BankDetail::class);
+    }
+
     /**
      * The users associated with the organizer.
      *
@@ -197,4 +207,3 @@ class Organiser extends MyBaseModel implements AuthenticatableContract
         $this->rules = array_merge($this->rules, $this->extra_rules);
     }
 }
-

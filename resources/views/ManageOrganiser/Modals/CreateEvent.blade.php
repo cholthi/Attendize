@@ -66,6 +66,12 @@
                             {!! Form::styledFile('event_image') !!}
 
                         </div>
+                        <div class="form-group">
+                            {!! Form::label('event_banner', trans("Event.event_banner"), array('class'=>'control-label ')) !!}
+                            {!! Form::styledFile('event_banner') !!}
+                            <span class="small">The banner size should be 1500px X 500px</span>
+
+                        </div>
                         @if(!empty(config("attendize.google_maps_geocoding_key")))
                         <div class="form-group address-automatic">
                             {!! Form::label('name', trans("Event.venue_name"), array('class'=>'control-label required ')) !!}

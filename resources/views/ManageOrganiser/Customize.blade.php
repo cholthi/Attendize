@@ -54,6 +54,9 @@
                 <li>
                     <a href="#OrganiserPageDesign" data-toggle="tab">@lang("Organiser.organiser_page_design")</a>
                 </li>
+               <li>
+                    <a href="#bankDetails" data-toggle="tab">Bank Details</a>
+                </li>
             </ul>
             <div class="tab-content panel">
                 <div class="tab-pane active" id="organiserSettings">
@@ -252,6 +255,58 @@
 
                     {!! Form::close() !!}
 
+                </div>
+                <div class="tab-pane" id="bankDetails">
+                    {!! Form::model($bank_detail, array('url' => route('postCreateBankDetail', ['organiser_id' => $organiser->id]), 'class' => 'ajax')) !!}
+                      @if(isset($bank_detail->id))
+                      <input type="hidden" name="bank_details_id" value="{{$bank_detail->id}}"/>
+                      @endif
+                    <div class="form-group">
+                        {!! Form::label('bank_name', "Bank Name", array('class'=>'required control-label ')) !!}
+                        {!!  Form::text('bank_name', old('bank_name'),
+                                                array(
+                                                'class'=>'form-control'
+                                                ))  !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('account_no', "Account Number", array('class'=>'control-label required')) !!}
+                        {!!  Form::text('account_no', old('account_no'),
+                                                array(
+                                                'class'=>'form-control ',
+                                                'placeholder'=>"200111xxxxxxx"
+                                                ))  !!}
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('bank_branch', "Bank Branch", array('class'=>'control-label')) !!}
+                        {!!  Form::text('bank_branch', old('bank_branch'),
+                                                array(
+                                                'class'=>'form-control',
+                                                ))
+                        !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('swift_code', "Swift Code", array('class'=>'control-label')) !!}
+                        {!!  Form::text('swift_code', old('swift_code'),
+                                                array(
+                                                'class'=>'form-control',
+                                                ))
+                        !!}
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('phone_number', "Phone Number", ['class'=>'control-label']) !!}
+                        {!!  Form::text('phone_number', old('phone_number'), [
+                                'class'=>'form-control',
+                                'placeholder' => "09xxxxxxxxx",
+                            ])
+                        !!}
+                    </div>
+
+                    <div class="modal-footer">
+                        {!! Form::submit("Save Bank Details", ['class'=>"btn btn-success"]) !!}
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

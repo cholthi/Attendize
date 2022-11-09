@@ -301,6 +301,10 @@ Route::group(
                 [OrganiserCustomizeController::class, 'postEditOrganiser']
             )->name('postEditOrganiser');
 
+            Route::post('{organiser_id}/bank_detail',
+                [OrganiserCustomizeController::class, 'postCreateBankDetails']
+            )->name('postCreateBankDetail');
+
           /*  Route::get('create',
                 [OrganiserController::class, 'showCreateOrganiser']
             )->name('showCreateOrganiser');

@@ -156,6 +156,7 @@
                    {!! Form::styledFile('event_image', 1) !!}
                 </div>
 
+
                 @if($event->images->count())
                     <div class="form-group">
                         {!! Form::label('event_image_position', trans("Event.event_image_position"), array('class'=>'control-label')) !!}
@@ -180,6 +181,13 @@
                     </div>
                 @endif
             </div>
+           <div class="col-md-6">
+           <div class="form-group">
+                    {!! Form::label('event_banner', trans("Event.event_banner"), array('class'=>'control-label ')) !!}
+                    {!! Form::styledFile('event_banner') !!}
+                    <span class="small">The banner size should be 1500px X 500px</span>
+           </div>
+          </div>
             <div class="col-md-6">
                 <div class="float-l">
                     @if($event->images->count())
@@ -212,4 +220,3 @@
     </div>
     {!! Form::close() !!}
 </div>
-
