@@ -25,7 +25,7 @@
                         <span class="text">@lang("Organiser.dashboard")</span>
                     </a>
                 </li>
-                @can('manage organisers')
+                @can('customize organisers')
                 <li class="{{ Request::is('*events*') ? 'active' : '' }}">
                     <a href="{{route('showOrganiserEvents', array('organiser_id' => $organiser->id))}}">
                         <span class="figure"><i class="ico-calendar"></i></span>

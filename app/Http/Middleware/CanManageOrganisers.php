@@ -27,6 +27,16 @@ class CanManageOrganisers
                 abort(403, 'No organisers can be found. Please ask your system administrator to finish setup.');
             }
 
+            if($user->can('customize organisers') && ($request->route()->getName() === 'showOrganiserCustomize'
+               || $request->route()->getName() === 'postCreateBankDetail'
+               || $request->route()->getName() === 'postEditOrganiser') || $request->route()->getName() === 'postEditOrganiserPageDesign') {
+               if($user->organiser->id == $request->route('organiser_id')){
+               return $next($request);
+               }
+
+                return redirect(route('index'));
+              }
+
             // Normal users should not be able to switch between organisers
             return redirect(route('index'));
         }

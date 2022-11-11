@@ -24,6 +24,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'manage tickets',
             'manage attendees',
             'admit attendees',
+            'customize organisers',
         ];
 
         $this->out('Seeding permissions');
@@ -58,6 +59,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 'manage tickets',
                 'manage attendees',
                 'admit attendees',
+                'customize organisers',
             ],
             'attendee check in' => [
                 'admit attendees',
