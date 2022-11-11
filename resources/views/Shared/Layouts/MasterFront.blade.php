@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    @include('Public.HomePage.Partials.Nav')
+    @include('Shared.Layouts.Header')
     <section id="main" role="main">
 
         @yield('content')
@@ -35,7 +35,7 @@
 
     @include("Shared.Partials.LangScript")
     {!! Html::script('assets/javascript/main.js') !!}
-    @include('Public.HomePage.Layouts.Footer')
+    @include('Shared.Layouts.Footer')
     @yield('footer')
 </body>
 @include('Shared.Partials.GlobalFooterJS')

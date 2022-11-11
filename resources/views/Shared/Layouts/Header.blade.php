@@ -4,7 +4,7 @@
     <div class="d-flex align-items-center position-relative flex-grow-1">
 
       <div class="site-logo">
-        <a href="#" class="text-black"><span class="text-primary">
+        <a href="/home" class="text-black"><span class="text-primary">
             <img style="width: 150px;" class="logo" alt="Ticketana" src="{{asset('assets/images/logo-dark.png')}}" />
         </a>
       </div>

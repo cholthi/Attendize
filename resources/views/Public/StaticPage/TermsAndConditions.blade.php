@@ -1,5 +1,4 @@
-@extends('Shared.Layouts.MasterWithoutMenus')
-
+@extends('Shared.Layouts.MasterFront')
 @section('title')
     Terms and Conditions
 @stop
@@ -11,8 +10,9 @@
 </style>
 
 @section('content')
-    <div class="row">
-      <div class="col-md-7 col-md-offset-2">
+<div class="container">
+    <div class="row pt-5 pb-5">
+      <div class="col-md-7 mx-auto">
       <div class="panel">
       <div class="panel-body">
       <h2 class="title">Terms and Conditions</h2>
@@ -87,4 +87,5 @@
     </div>
   </div>
   </div>
+</div>
 @stop
