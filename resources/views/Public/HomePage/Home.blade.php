@@ -1,4 +1,4 @@
-@extends('Public.HomePage.Layouts.Master')
+@extends('Shared.Layouts.MasterFront')
 
 @section('head')
     {!! Html::style('/vendor/slick-carousel/slick/slick.css') !!}
@@ -15,7 +15,7 @@
                         <div class="text-uppercase text-light">
                             Filters
                         </div>
-                        <button class="btn btn-link btn-sm text-black p-0 ms-auto text-decoration-none">
+                        <button type="button" id="btn-clear" class="btn btn-link btn-sm text-black p-0 ms-auto text-decoration-none">
                             Clear All
                         </button>
                     </div>
@@ -74,6 +74,11 @@
                     value: $location.val()
                 });
             });
+
+            // clear filters
+            $('#btn-clear').on('click', function(e) {
+                query.removeAll();
+            })
 
             function changeDate(val) {
                query.remove('date');

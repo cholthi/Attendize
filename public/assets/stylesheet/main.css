@@ -11999,6 +11999,13 @@ textarea.form-control-lg {
   text-decoration: none;
 }
 
+.contact-col {
+  grid-column: 4;
+  font-weight: 300;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
 @media (max-width: 575.98px) {
   .footer-grid {
     grid-template-columns: 1fr;
