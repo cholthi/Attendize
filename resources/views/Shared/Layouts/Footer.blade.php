@@ -43,7 +43,7 @@
 
         </div>
         <div class="py-2 fs-7 d-flex align-items-center">
-            <span class="fs-7">© 2022 Eventbrite</span>
+            <span class="fs-7">© 2022 Ticketana</span>
             <div class="footer-social d-flex align-items-center ms-auto gap-4">
                 <a href="">
                     <i class="ico-facebook me-1"></i> Facebook

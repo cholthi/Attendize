@@ -13,6 +13,9 @@
 
         <!--Style-->
        {!!Html::style('assets/stylesheet/application.css')!!}
+       {!!Html::style('assets/stylesheet/main.css?'.time()) !!}
+       {!!Html::style('assets/stylesheet/icons/iconfont/style.css?v=3s') !!}
+       {!!Html::style('assets/stylesheet/style.css?v=3s') !!}
         <!--/Style-->
 
         @yield('head')

@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row pt-5 pb-5">
       <div class="col-md-7 mx-auto">
-      <div class="panel">
+      <div class="panel fs-5">
       <div class="panel-body">
       <h2 class="title">Terms and Conditions</h2>
       </div>
