@@ -29,15 +29,21 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-       {!!Html::style('assets/stylesheet/frontend.css')!!}
+       <!--Style-->
+    {!!Html::style('assets/stylesheet/main.css?'.time()) !!}
+    {!!Html::style('assets/stylesheet/icons/iconfont/style.css?v=3s') !!}
+    {!!Html::style('assets/stylesheet/style.css?v=3s') !!}
+    <!--/Style-->
         @yield('head')
     </head>
     <body class="attendize">
+        @include('Shared.Layouts.Header')
         @include('Shared.Partials.FacebookSdk')
         <div id="organiser_page_wrap">
             @yield('content')
         </div>
 
+        @include('Shared.Layouts.Footer')
         <a href="#intro" style="display:none;" class="totop"><i class="ico-angle-up"></i>
             <span style="font-size:11px;">@lang("basic.TOP")</span></a>
 
