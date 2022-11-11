@@ -29,7 +29,7 @@ class CheckMgurushPaymentStatus implements ShouldQueue
     public function __construct($order)
     {
         Log::info("Checking payment status for order with txnRefNumber: #" . $order->order_reference);
-       $this->order = $order;
+        $this->order = $order;
     }
 
     /**
@@ -40,36 +40,36 @@ class CheckMgurushPaymentStatus implements ShouldQueue
     public function handle()
     {
      $payment_config = $this->order->account->getGateway($this->order->payment_gateway_id);
-      $client = new \GuzzleHttp\Client();
+     $client = new \GuzzleHttp\Client();
 
-    $data = [
+     $data = [
       'txnRefNumber' => $this->order->transaction_id
      ];
 
      $headers = [
        'Content-Type' => 'application/json',
        'access_key'   => $payment_config->config['accessKey'],
-       'Hmac'        =>  $this->getHash($data, $payment_config->config['secretKey'])
+       'Hmac'        => $this->getHash($data, $payment_config->config['secretKey'])
       ];
 
      $response  = $client->request('POST', $this->endpoint, ['body'=> json_encode($data), 'headers'=>$headers]);
      if($response->getStatusCode() === 200)
         {
          $decoded = json_decode($response->getBody()->getContents(), true);
-         //dd($decoded);
+        // dd($decoded);
          $payment_success = $decoded['status']['statusCode'] == 0 ? true : false;
 
-        if(!$payment_success)
+        if(!$payment_success || !is_numeric($decoded['message']['txnId']))
            {
-            Log::info("Mgurush payment failed: ".$decoded['status']['messageDescription']);
-            throw new Exception("Mgurush Payment Failed: ".$decoded['status']['messageDescription']);
+            Log::info("Mgurush payment having status: ".$decoded['message']['txnStatus']);
+           throw  new \Exception("Mgurush payment status: ".$decoded['message']['txnStatus']);
            }
            //payment successded change the order status
-          Order::where('order_reference', $this->order->order_reference)
+          Order::where('id',$this->order->id)
           ->update([
                    'is_payment_received' => 1,
                    'order_status_id' => config('attendize.order.complete'),
-                   'transaction_id'  => $decoded['status']['tnxId']
+                   'transaction_id'  => $decoded['message']['txnId']
                ]);
         }
     }

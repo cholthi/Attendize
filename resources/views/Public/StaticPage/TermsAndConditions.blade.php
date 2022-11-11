@@ -1,4 +1,4 @@
-@extends('Shared.Layouts.MasterFront')
+@extends('Shared.Layouts.MasterWithoutMenus')
 @section('title')
     Terms and Conditions
 @stop

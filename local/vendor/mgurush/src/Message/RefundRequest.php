@@ -48,9 +48,9 @@ public function getData()
             'partnerCode' => $this->getPartnerCode(),
             'amount'       => $this->getAmount(),
             'currency'     => $this->getCurrency(),
-            'txnRefNumber' => $this->getTnxRefNumber(),
+            'refundTxnRefNumber' => $this->getOrderId(),
             'orderId'    =>  $this->getOrderId(),
-            'refundTxnRefNumber' => $this->getRefundTxnRefNumber()
+            'txnRefNumber' => $this->getTnxRefNumber()
           ];
 
           return $data;
@@ -64,6 +64,26 @@ public function getData()
 public function getEndpoint()
     {
         return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
+    }
+
+public function get_hmac_hash()
+     {
+       $params = [
+            'partnerCode' => $this->getPartnerCode(),
+            'amount'       => $this->getAmount(),
+            'currency'     => $this->getCurrency(),
+            'refundTxnRefNumber' => $this->getOrderId(),
+            'orderId'    =>  $this->getOrderId(),
+            'txnRefNumber' => $this->getTnxRefNumber()
+          ];
+
+     $encoded = json_encode($params);
+     $raw = hash_hmac('sha256',$encoded, $this->getSecretKey(), true);
+
+      $hash = base64_encode($raw);
+
+      return $hash;
+
     }
 
 }

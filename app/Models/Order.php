@@ -36,6 +36,8 @@ class Order extends MyBaseModel
         'account_id',
         'event_id',
         'taxamt',
+        'is_payment_received',
+        'transaction_id'
     ];
 
     /**
