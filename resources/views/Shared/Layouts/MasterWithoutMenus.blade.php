@@ -13,9 +13,6 @@
 
         <!--Style-->
        {!!Html::style('assets/stylesheet/application.css')!!}
-       {!!Html::style('assets/stylesheet/main.css?'.time()) !!}
-       {!!Html::style('assets/stylesheet/icons/iconfont/style.css?v=3s') !!}
-       {!!Html::style('assets/stylesheet/style.css?v=3s') !!}
         <!--/Style-->
 
         @yield('head')
@@ -33,6 +30,10 @@
                 text-transform: uppercase;
                 letter-spacing: 4px;
                 font-size: 23px;
+            }
+            .mx-auto {
+                margin: auto;
+                float: none;
             }
             .panel {
                 background-color: #ffffff;
