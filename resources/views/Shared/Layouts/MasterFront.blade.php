@@ -34,7 +34,7 @@
     </div>
 
     @include("Shared.Partials.LangScript")
-    {!! Html::script('assets/javascript/main.js') !!}
+    {!! Html::script('assets/javascript/main.js?'.time()) !!}
     @include('Shared.Layouts.Footer')
     @yield('footer')
 </body>
