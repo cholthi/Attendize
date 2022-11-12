@@ -25,7 +25,7 @@
 
 <body>
     @include('Shared.Layouts.Header')
-    <section id="main" role="main">
+    <section id="main" class="main-content" role="main">
 
         @yield('content')
 

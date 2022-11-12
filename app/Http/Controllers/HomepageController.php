@@ -49,7 +49,7 @@ class HomePageController extends Controller
             ['is_live', 1]])->paginate();
          }
  // Get popular events according to the EventStat model
- $popular_events = Event::where([['end_date', '<', now()]])->whereHas('stats',
+ $popular_events = Event::where([['end_date', '>', now()]])->whereHas('stats',
                                function ($query) {
                                $query->orderByDesc('views');
                     })->take(5);

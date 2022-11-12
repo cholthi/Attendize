@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-white py-3">
+<nav class="navbar navbar-expand-lg shadow-sm bg-white fixed-top py-3">
 
     <div class="container-fluid">
         <div class="d-flex align-items-center position-relative flex-grow-1">
