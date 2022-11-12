@@ -11,4 +11,8 @@ class StaticPageController extends Controller
       $date = new Carbon("2022-10-22");
       return view("Public.StaticPage.TermsAndConditions", compact('date'));
     }
+
+    public function showHelloWorld() {
+      return view("Public.StaticPage.HelloWorld");
+    }
 }

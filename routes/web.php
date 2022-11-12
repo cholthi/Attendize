@@ -59,6 +59,9 @@ Route::group(
      */
     Route::get('terms-conditions',
       [StaticPageController::class, 'showTermsAndConditions'])->name('termsAndConditions');
+    
+      Route::get('hello-world',
+      [StaticPageController::class, 'showHelloWorld'])->name('helloWorld');
 
     /*
      * -------------------------
