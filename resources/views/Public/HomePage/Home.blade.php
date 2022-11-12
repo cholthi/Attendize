@@ -5,12 +5,13 @@
 @stop
 
 @section('content')
+<<<<<<< HEAD
     @include('Public.HomePage.Partials.BannerSlider',['events' => $popular_events])
     <section class="container py-4 py-sm-5">
         <div class="row">
             <aside class="col-md-3">
               {!! Form::open(['url' => route('home'),'method'=>'get']) !!}
-                <div class="filter-wrap border p-4">
+                <div class="filter-wrap rounded p-4 bg-white shadow-sm">
                     <div class="d-flex align-items-start mb-3">
                         <div class="text-uppercase text-light">
                             Filters
