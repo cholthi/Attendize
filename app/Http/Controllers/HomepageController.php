@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Attendize\Utils;
 use App\Models\Event;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,8 @@ class HomePageController extends Controller
     public function showEventsHomePage(Request $request)
     {
        $searchQuery = $request->get('q');
+       $start_date_query = $request->get('start_date'); //Carbon::createFromFormat('Y-m-d',  $request->get('start_date'));
+       $end_date_query = $request->get('end_date');
 
        if($searchQuery) {
         $upcoming_events = Event::with(['organiser', 'currency'])->where([
@@ -28,11 +31,24 @@ class HomePageController extends Controller
                         ->orWhere('description', 'like', $searchQuery . '%')
                         ->orWhere('location', 'like', $searchQuery . '%');
                 })->paginate();
-       } else {
+       }elseif($start_date_query) {
+              $upcoming_events = Event::with(['organiser', 'currency'])->where([
+            ['start_date', '>=', Carbon::createFromFormat('Y-m-d',  $request->get('start_date'))],
+            ['is_live', 1]
+        ])->paginate();
+
+           }elseif($end_date_query) {
+              $upcoming_events = Event::with(['organiser', 'currency'])->where([
+            ['end_date', '<=', Carbon::createFromFormat('Y-m-d',  $request->get('end_date'))],
+            ['is_live', 1]
+        ])->paginate();
+        } else{
                $upcoming_events = Event::with(['organiser', 'currency'])->where([
             ['end_date', '>=', now()],
             ['is_live', 1]])->paginate();
          }
+
+     
 
       if($searchQuery) {
         $past_events = Event::with(['organiser', 'currency'])->where([
@@ -49,7 +65,7 @@ class HomePageController extends Controller
             ['is_live', 1]])->paginate();
          }
  // Get popular events according to the EventStat model
- $popular_events = Event::where([['end_date', '>', now()]])->whereHas('stats',
+ $popular_events = Event::where([['end_date', '>', now()],['is_live', 1]])->whereHas('stats',
                                function ($query) {
                                $query->orderByDesc('views');
                     })->take(5);

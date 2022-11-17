@@ -9,11 +9,11 @@
                             src="{{ asset('assets/images/logo-dark.png') }}" />
                 </a>
             </div>
-            <form class="mb-0 mx-auto flex-grow-1 mw-600">
+            <form class="mb-0 mx-auto flex-grow-1 mw-600" action="{{ route('home') }}">
                 <div class="position-relative search-control-wrap">
                     <i class="input-icon ico-search"></i>
                     <input type="text" class="form-control form-control-lg main-search-input"
-                        placeholder="Search events" />
+                        placeholder="Search events"  name="q" />
                 </div>
             </form>
             <button id="btn-nav-toggle" class="navbar-toggler" type="button" data-bs-toggle="collapse"

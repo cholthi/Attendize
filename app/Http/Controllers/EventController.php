@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Log;
+use File;
 use Auth;
 use Image;
 use Validator;
@@ -322,10 +323,15 @@ class EventController extends MyBaseController
         }
 
         if ($request->hasFile('event_banner')) {
-            $path = public_path() . '/' . config('attendize.event_banners_path');
-            $filename = 'event_banner-' . md5(time() . $event->id) . '.' . strtolower($request->file('event_image')->getClientOriginalExtension());
 
-            $file_full_path = $path . '/' . $filename;
+            if (File::exists(public_path('user_content/event_banners/'.$event->images->first()->banner_image_path()))) {
+                File::delete(public_path('user_content/event_banners/'.$event->images->first()->banner_image_path()));
+             }
+            $path = public_path(). '/' .config('attendize.event_banners_path');
+            $filename = str_replace(config('attendize.event_banners_path').'/', '', $event->images->first()->banner_image_path());
+           // dd($filename);
+
+            $file_full_path = $path. '/' . $filename;
 
             $request->file('event_banner')->move($path, $filename);
 

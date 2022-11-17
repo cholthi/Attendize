@@ -63,6 +63,9 @@ Route::group(
       Route::get('hello-world',
       [StaticPageController::class, 'showHelloWorld'])->name('helloWorld');
 
+     Route::get('faq',
+      [StaticPageController::class, 'showFaqContactUs'])->name('faq');
+
     /*
      * -------------------------
      * Installer
@@ -350,7 +353,7 @@ Route::group(
         /*
          * Event management routes
          */
-        Route::group(['prefix' => 'event'], function () {
+        Route::group(['prefix' => 'event', 'middleware' => ['event.owners']], function () {
 
             /*
              * Dashboard

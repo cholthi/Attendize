@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'first.run'  => \App\Http\Middleware\FirstRunMiddleware::class,
         'installed'  => \App\Http\Middleware\CheckInstalled::class,
         'manage.organisers'  => \App\Http\Middleware\CanManageOrganisers::class,
+        'event.owners'      => \App\Http\Middleware\EnsureEventOwner::class,
 
         /**** OTHER MIDDLEWARE ****/
         'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,

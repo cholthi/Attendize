@@ -41,7 +41,7 @@
       <div>You authorise us to (i) collect, hold, disburse and retain proceeds on your behalf; (ii) where we determine a consumer is entitled to a refund, to issue the refund. <b>In accepting the appointment as your limited agent, we assume no liability for any act or omission on your part.</b><br></div>
       <div><br></div>
       <div><b>3.&nbsp;</b><b>What we Charge</b></div>
-      <div>Creating an account, listing an event and accessing the platform are free. However, we charge fees when we process payments on your behalf. These fees may vary based on individual agreements between organisers and Ticketana.&nbsp;<span>Our fees typically comprise a percentage based fee ("Commission") and a fixed fee per item ("Booking Fee").&nbsp;</span><span>Organisers ultimately determine whether these fees will be charged to consumers and shown as fees on the applicable booking page or absorbed into the ticket, donation or subscription price and paid by the organiser out of gross proceeds.&nbsp;</span></div>
+      <div>Creating an account, listing an event and accessing the platform are free. However, we charge fees when we process payments on your behalf. These fees may vary based on individual agreements between organisers and Ticketana.&nbsp;<span>Our fees typically comprise a percentage based fee ("Commission") and a fixed fee per item ("Booking Fee").&nbsp;</span><span>Organisers ultimately determine whether these fees will be charged to consumers and shown as fees on the applicable booking page or absorbed into the ticket price and paid by the organiser out of gross proceeds.&nbsp;</span></div>
       <div><br></div>
       <div>Our fees may change from time to time, and may vary based on several factors including but not limited to product type, price, country, payment method, and currency. Our fees can be viewed on the Ticketana website under the relevant product section.<br></div>
       <div><br></div>
@@ -57,7 +57,7 @@
       <div><br></div>
       <div>Where transaction proceeds are collected from a third party ticket vendor, we may withhold payment of funds to you until the vendor has settled any amounts owing to us.&nbsp;<br></div>
       <div><br></div>
-      <div>If you or your third party payment provider collects proceeds from consumers directly, you must pay us our fee within 3 business days of the end of the event, or, in the case of subscriptions and fundraisers , within 3 business days of collection of the contribution from the consumer.<br></div>
+      <div>If you or your third party payment provider collects proceeds from consumers directly, you must pay us our fee within 3 business days of the end of the event.<br></div>
       <div><br></div>
       <div><b>8.&nbsp;</b><b>Disclaimer, and Assumption of Risks by You</b></div>
       <div><b>You are solely responsible for delivering the event.</b><br></div>

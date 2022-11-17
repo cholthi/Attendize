@@ -5,39 +5,36 @@
                 <h5 class="footer-links-title">Use Ticketana</h5>
                 <ul class="footer-links list-unstyled mb-0">
                     <li class="footer-link-item">
-                        <a href="#" class="footer-link">How It Works</a>
+                        <a href="#" class="footer-link">How to buy a ticket</a>
                     </li>
                     <li class="footer-link-item">
-                        <a href="#" class="footer-link">Pricing</a>
+                        <a href="#" class="footer-link">How to sell tickets</a>
                     </li>
-                    <li class="footer-link-item">
-                        <a href="#" class="footer-link">FAQ</a>
+                   <li class="footer-link-item">
+                        <a href="#" class="footer-link">Contact us</a>
                     </li>
 
                 </ul>
             </div>
             <div>
-                <h5 class="footer-links-title">Services</h5>
+                <h5 class="footer-links-title">Legal</h5>
                 <ul class="footer-links list-unstyled mb-0">
                     <li class="footer-link-item">
-                        <a href="#" class="footer-link">How It Works</a>
+                        <a href="#" class="footer-link">Terms and Conditions</a>
                     </li>
                     <li class="footer-link-item">
-                        <a href="#" class="footer-link">Pricing</a>
-                    </li>
-                    <li class="footer-link-item">
-                        <a href="#" class="footer-link">FAQ</a>
+                        <a href="#" class="footer-link">Privacy Policy</a>
                     </li>
 
                 </ul>
             </div>
 
             <div class="ml-sm-auto contact-col">
-                <h5 class="footer-links-title">Contact Us</h5>
-                <address>
+                 <img style="width: 150px;"  alt="Attendize" src="{{asset('assets/images/logo-light.png')}}"/>
+                <address style="margin-left:10px;">
                     Ticketana.com<br>
-                    Box 564, Disneyland<br>
-                    USA
+                    Box 564, Juba Hai Seminary<br>
+                    South Sudan
                 </address>
             </div>
 

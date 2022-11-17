@@ -4,8 +4,12 @@
     {!! Html::style('/vendor/slick-carousel/slick/slick.css') !!}
 @stop
 
+@section('title')
+ Buy and Sell Events tickets in South Sudan
+ @parent
+@stop
+
 @section('content')
-<<<<<<< HEAD
     @include('Public.HomePage.Partials.BannerSlider',['events' => $popular_events])
     <section class="container py-4 py-sm-5">
         <div class="row">
@@ -22,13 +26,13 @@
                         </button>
                     </div>
                     <div class="form-group mb-4">
-                        <label class="form-label text-black">Start Date</label>
-                        <input id="date-filter" type="date" class="form-control form-control-sm" name="start_date" />
+                        <label class="form-label text-black">Event Start Date</label>
+                        <input id="start-date" type="date" class="form-control form-control-sm" name="start_date" />
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label text-black">End Date</label>
-                        <input id="date-filter" type="date" class="form-control form-control-sm" name="end_date" />
+                        <label class="form-label text-black">Event End Date</label>
+                        <input id="end-date" type="date" class="form-control form-control-sm" name="end_date" />
                     </div>
                 </div>
                 {!! Form::token() !!}
@@ -56,26 +60,17 @@
 
             let query = new pushToUrl();
 
-            $('#date-filter').on('blur, change', function() {
+            $('#start-date').on('blur, change', function() {
                 const $date = $(this);
-                changeDate($date.val());
+                let opt = {key: 'start_date', value: $date.val() }
+                changeDate(opt);
             });
 
 
-            $('#date-filter').on('keypress', function(e) {
+            $('#end-date').on('blur change', function(e) {
                 const $date = $(this);
-                if (e.keyCode === 13) {
-                    changeDate($date.val());
-                }
-            });
-
-            $('#location-filter').on('change', function() {
-                const $location = $(this);
-                query.remove('date');
-                query.add({
-                    key: 'date',
-                    value: $location.val()
-                });
+                let opt = {key: 'end_date', value: $date.val() }
+                changeDate(opt);
             });
 
             // clear filters
@@ -83,12 +78,12 @@
                 query.removeAll();
             })
 
-            function changeDate(val) {
-                query.remove('date');
-                query.add({
-                    key: 'date',
-                    value: val
-                });
+            function changeDate(opt) {
+                query.remove('start_date');
+                query.remove('end_date');
+                query.add(opt);
+            // Reload page to pickup the filter params
+              location.reload(true)
             }
 
         });

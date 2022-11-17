@@ -15,4 +15,9 @@ class StaticPageController extends Controller
     public function showHelloWorld() {
       return view("Public.StaticPage.HelloWorld");
     }
+
+   public function showFaqCOntactUs() {
+      return view("Public.StaticPage.FaqContactUs");
+    }
+
 }

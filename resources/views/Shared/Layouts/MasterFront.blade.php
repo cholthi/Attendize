@@ -2,7 +2,9 @@
 
 <head>
 
-    <title>@yield('title')</title>
+    <title>@yield('title')
+    | Ticketana.com
+    </title>
 
     @include('Shared/Layouts/ViewJavascript')
 
