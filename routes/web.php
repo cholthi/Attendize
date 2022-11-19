@@ -352,6 +352,7 @@ Route::group(
 
         /*
          * Event management routes
+         * remove 'middleware' => ['event.owners'] temporary as it causing issues with routes without event_id param
          */
         Route::group(['prefix' => 'event', 'middleware' => ['event.owners']], function () {
 
