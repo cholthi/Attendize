@@ -342,23 +342,24 @@ class EventAttendeesController extends MyBaseController
    {
 
      $ticket = Ticket::scope()->find($request->get('ticket_id'));
-     $rules = [
-         'ticket_qty' => 'required',
-         'ticket_id'  => 'required|exists:tickets,id,account_id,' . \Auth::user()->account_id,
-         'ticket_qty.numeric',
-         'ticket_qty.min.1' ,
-         'ticket_qty.max.250',
+     $min_tickets = 1;
+     $max_tickets = 250;
+     $rules['ticket_qty'] = [
+        'required',
+         'numeric',
+         'min:'. $min_tickets,
+         'max:'. $max_tickets,
      ];
 
      $messages = [
          'ticket_id.exists'   => trans("Controllers.ticket_not_exists_error"),
          'ticket_id.required' => trans("Controllers.ticket_field_required_error"),
          'ticket_qty.required' => 'The Ticket quantity is required', //trans("Controllers.ticket_field_required_error")
-         'ticket_qty.min'      => 'The minimum offline quantity is 1',
+         'ticket_qty.min'      => 'The minimum offline ticket quantity is 1',
          'ticket_qty.max'      => 'You can only generate 250 offline tickets at a time',
      ];
 
-     $validator = Validator::make($request->all(), $rules, $messages);
+     $validator = Validator::make(['ticket_id' => $request->get('ticket_id'), 'ticket_qty' => (int)$request->get('ticket_qty')], $rules, $messages);
 
      if ($validator->fails()) {
          return response()->json([
@@ -368,7 +369,7 @@ class EventAttendeesController extends MyBaseController
      }
      $attendee_increment = 1;
      $ticket_id = $request->get('ticket_id');
-     $ticket_qty = $request->get('ticket_id');
+     $ticket_qty = $request->get('ticket_qty');
      $event = Event::findOrFail($event_id);
      $ticket_price = $ticket->price;
      $attendee_first_name = trans("Attendee.offline_ticket_firstname");
