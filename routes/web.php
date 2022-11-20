@@ -59,7 +59,7 @@ Route::group(
      */
     Route::get('terms-conditions',
       [StaticPageController::class, 'showTermsAndConditions'])->name('termsAndConditions');
-    
+
       Route::get('hello-world',
       [StaticPageController::class, 'showHelloWorld'])->name('helloWorld');
 
@@ -406,6 +406,18 @@ Route::group(
             Route::post('{event_id}/tickets/order',
                 [EventTicketsController::class, 'postUpdateTicketsOrder']
             )->name('postUpdateTicketsOrder');
+
+            /*
+            * Offline Tickets
+            *
+            */
+            Route::get('{event_id}/offline_tickets',
+                [EventAttendeesController::class, 'showOfflineTickets']
+            )->name('showOfflineTickets');
+
+            Route::post('{event_id}/offline_tickets',
+                [EventAttendeesController::class, 'postOfflineTickets']
+            )->name('postOfflineTickets');
 
             /*
              * -------

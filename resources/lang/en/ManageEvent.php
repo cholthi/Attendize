@@ -50,6 +50,8 @@ return array (
   'maximum_tickets_per_order' => 'Maximum Tickets Per Order',
   'message_attendee_title' => 'Message :attendee',
   'message_attendees' => 'Message',
+  'offline_tickets' => 'Offline Tickets',
+  'create_offline_tickets' => 'Create Offline Tickets',
   'message_attendees_title' => 'Message Attendees',
   'message_order' => 'Message :order',
   'minimum_tickets_per_order' => 'Minimum Tickets Per Order',
@@ -96,7 +98,7 @@ return array (
   'ticket_title_placeholder' => 'E.g: VIP',
   'update_order' => 'Update Order',
   'widgets' => 'Widgets',
-  'LLH:obsolete' => 
+  'LLH:obsolete' =>
   array (
     'create_question' => 'Create Question',
   ),

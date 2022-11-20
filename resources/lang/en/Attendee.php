@@ -23,4 +23,7 @@ return array (
   'reference' => 'Reference',
   'search_attendees' => 'Search Attendees...',
   'send_invitation_n_ticket_to_attendee' => 'Send invitation & ticket to attendee.',
+  'offline_ticket_firstname'           => 'Offline',
+  'offline_ticket_lastname'           => 'Ticket',
+
 );

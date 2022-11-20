@@ -31,11 +31,11 @@
         <div class="btn-group btn-group-responsive">
             <button data-modal-id="InviteAttendee" href="javascript:void(0);"  data-href="{{route('showInviteAttendee', ['event_id'=>$event->id])}}" class="loadModal btn btn-success" type="button"><i class="ico-user-plus"></i> @lang("ManageEvent.invite_attendee")</button>
         </div>
-        
+
         <div class="btn-group btn-group-responsive">
             <button data-modal-id="ImportAttendees" href="javascript:void(0);"  data-href="{{route('showImportAttendee', ['event_id'=>$event->id])}}" class="loadModal btn btn-success" type="button"><i class="ico-file"></i> @lang("ManageEvent.invite_attendees")</button>
         </div>
-        
+
         <div class="btn-group btn-group-responsive">
             <a class="btn btn-success" href="{{route('showPrintAttendees', ['event_id'=>$event->id])}}" target="_blank" ><i class="ico-print"></i> @lang("ManageEvent.print_attendee_list")</a>
         </div>
@@ -49,6 +49,9 @@
                 <li><a href="{{route('showExportAttendees', ['event_id'=>$event->id,'export_as'=>'csv'])}}">@lang("File_format.csv")</a></li>
                 <li><a href="{{route('showExportAttendees', ['event_id'=>$event->id,'export_as'=>'html'])}}">@lang("File_format.html")</a></li>
             </ul>
+        </div>
+        <div class="btn-group btn-group-responsive">
+            <button data-modal-id="OfflineTickets" href="javascript:void(0);" data-href="{{route('showOfflineTickets', ['event_id'=>$event->id])}}" class="loadModal btn btn-success" type="button"><i class="ico-ticket"></i> @lang("ManageEvent.offline_tickets")</button>
         </div>
         <div class="btn-group btn-group-responsive">
             <button data-modal-id="MessageAttendees" href="javascript:void(0);" data-href="{{route('showMessageAttendees', ['event_id'=>$event->id])}}" class="loadModal btn btn-success" type="button"><i class="ico-envelope"></i> @lang("ManageEvent.message_attendees")</button>
@@ -171,5 +174,3 @@
 </div>    <!--/End attendees table-->
 
 @stop
-
-

@@ -31,6 +31,7 @@ return array (
   'check_in_all_tickets' => 'Check in all tickets associated to this order',
   'confirmation_malformed' => 'The confirmation code is missing or malformed.',
   'confirmation_successful' => 'Success! Your email is now verified. You can now login.',
+  'offline_tickets_successfully_created' => "Offline Tickets Successfully Created.",
   'error' =>
   array (
     'email' =>
