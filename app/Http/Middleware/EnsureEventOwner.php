@@ -16,6 +16,8 @@ class EnsureEventOwner
      */
     public function handle($request, Closure $next)
     {
+     if($request->route('event_id'))
+      {
        $event = Event::FindOrFail($request->route('event_id'));
        $user = Auth::user();
       //Non Super admin users should only access routes of their events
@@ -26,4 +28,8 @@ class EnsureEventOwner
         //everyone go back!
         return redirect()->back();
     }
+      //Routes without event_id param should go through
+   return $next($request);
+
+  }
 }
