@@ -5,7 +5,7 @@
 
 @section('content')
 <section class="mx-auto bg-white container" style="color:black; width:80%;">
-<h3 class="text-center mb-4 pb-2 text-primary fw-bold">Features</h3>
+<h5 class="text-center mb-4 pb-2  fw-bold">Features</h5>
   <p class="text-center mb-5">
     We support event organisers to make great events happen
   </p>
@@ -49,7 +49,7 @@
     <div class="col-sm-6  mb-4">
       <h6 class="mb-3 text-primary"><i class="icon-bank pe-2"></i> Payment and Reporting</h6>
       <p>
-        After your event ended your funds from tickets sale will paid to your bank account fo your choice after three days. You set the bank details from your payment in the admin dashboard.
+        After your event ended your funds from tickets sale will be paid to your bank account of your choice after three days. You set the bank details the payment will be made to in the admin dashboard.
       </p>
     </div>
     <div class="row">

@@ -5,10 +5,10 @@
                 <h5 class="footer-links-title">Use Ticketana</h5>
                 <ul class="footer-links list-unstyled mb-0">
                     <li class="footer-link-item">
-                        <a href="#" class="footer-link">How to buy a ticket</a>
+                        <a href="{{route('howToBuy')}}" class="footer-link">How to buy a ticket</a>
                     </li>
                     <li class="footer-link-item">
-                        <a href="#" class="footer-link">How to sell tickets</a>
+                        <a href="{{route('howToSell')}}" class="footer-link">How to sell tickets</a>
                     </li>
                    <li class="footer-link-item">
                         <a href="#" class="footer-link">Contact us</a>
@@ -20,10 +20,10 @@
                 <h5 class="footer-links-title">Legal</h5>
                 <ul class="footer-links list-unstyled mb-0">
                     <li class="footer-link-item">
-                        <a href="#" class="footer-link">Terms and Conditions</a>
+                        <a href="{{route('termsAndConditions')}}" class="footer-link">Terms and Conditions</a>
                     </li>
                     <li class="footer-link-item">
-                        <a href="#" class="footer-link">Privacy Policy</a>
+                        <a href="{{route('termsAndConditions')}}" class="footer-link">Privacy Policy</a>
                     </li>
 
                 </ul>

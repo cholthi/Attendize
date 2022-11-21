@@ -66,6 +66,12 @@ Route::group(
      Route::get('faq',
       [StaticPageController::class, 'showFaqContactUs'])->name('faq');
 
+      Route::get('how-to-buy-tickets',
+       [StaticPageController::class, 'showHowToBuy'])->name('howToBuy');
+
+       Route::get('how-to-sell-tickets',
+        [StaticPageController::class, 'showHowToSell'])->name('howToSell');
+
     /*
      * -------------------------
      * Installer

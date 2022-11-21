@@ -1,4 +1,4 @@
-@extends('Shared.Layouts.MasterWithoutMenus')
+@extends('Shared.Layouts.MasterFront')
 @section('title')
     Terms and Conditions
 @stop
@@ -10,12 +10,12 @@
 </style>
 
 @section('content')
-<div class="container">
+<section class="container  bg-white" style="color:black; width:80%;">
     <div class="row pt-5 pb-5">
-      <div class="col-md-7 mx-auto">
-      <div class="panel fs-5">
+      <div class="col-md-8 mx-auto">
+      <div class="panel fs-6">
       <div class="panel-body">
-      <h2 class="title">Terms and Conditions</h2>
+      <h5 class="title">Terms and Conditions</h5>
       </div>
       <div>
         <div><b>1.&nbsp;</b><b>Listings</b></div>

@@ -20,4 +20,12 @@ class StaticPageController extends Controller
       return view("Public.StaticPage.FaqContactUs");
     }
 
+    public function showHowToBuy() {
+      return view("Public.StaticPage.HowToBuy");
+    }
+
+    public function showHowToSell() {
+      return view("Public.StaticPage.HowToSell");
+    }
+
 }
