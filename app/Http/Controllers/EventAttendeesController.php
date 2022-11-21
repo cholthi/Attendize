@@ -321,7 +321,7 @@ class EventAttendeesController extends MyBaseController
       * @todo This is a bit hackish
       */
      if ($event->tickets->count() === 0) {
-         return '<script>showMessage("'.trans("Controllers.addInviteError").'");</script>';
+         return '<script>showMessage("'.trans("Controllers.offlineTicketError").'");</script>';
      }
 
      return view('ManageEvent.Modals.OfflineTickets', [
