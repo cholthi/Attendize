@@ -14,6 +14,10 @@ class IndexController extends Controller
      */
     public function showIndex(Request $request)
     {
+      if(!Auth::check())
+        {
+          return redirect()->route('home');
+        }
         /** @var $user App\Models\User */
         $user = Auth::user();
 

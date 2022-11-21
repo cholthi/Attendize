@@ -52,7 +52,7 @@ Route::group(
           [EventCheckoutController::class, 'mgurushNotifications']
       )->name('paymentCallbacks');
 
-    Route::get('home',
+    Route::get('h',
       [HomePageController::class, 'showEventsHomePage'])->name('home');
 
 /*Terms and conditions route
@@ -712,5 +712,5 @@ Route::group(
     });
 
     // Index page
-    Route::get('/', [IndexController::class, 'showIndex'])->middleware('auth')->name('index');
+    Route::get('/', [IndexController::class, 'showIndex'])->name('index');
 });
