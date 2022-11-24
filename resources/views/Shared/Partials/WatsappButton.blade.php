@@ -16,7 +16,8 @@
                buttonImage: '<img src="{{ asset('vendor/floating-whatsapp/whatsapp.svg') }}" />', //Button Image
                //headerColor: 'crimson', //Custom header color
                //backgroundColor: 'crimson', //Custom background button color
-               position: "right" //Position: left | right
+               position: "right", //Position: left | right
+               size: '60px'
 
            });
        });
