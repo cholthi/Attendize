@@ -130,7 +130,7 @@
                 </div>
 
 
-                    @if(!$order->is_payment_received)
+                    @if(!$order->is_payment_received && $event->enable_offline_payments)
                         <h3>
                             @lang("Public_ViewEvent.payment_instructions")
                         </h3>
