@@ -453,7 +453,7 @@ class EventCheckoutController extends Controller
                      'payment_gateway' => $payment_gateway,
                      'secondsToExpire' => $secondsToExpire,
                      'payment_failed' => $payment_failed,
-                     'all_paymentGateways' => PaymentGateway::get()
+                     'all_paymentGateways' => PaymentGateway::where('status', 1)->get()
         ];
 
         return view('Public.ViewEvent.EventPagePayment', $viewData);
