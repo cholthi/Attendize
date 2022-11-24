@@ -37,6 +37,7 @@
 
     @include("Shared.Partials.LangScript")
     {!! Html::script('assets/javascript/main.js?'.time()) !!}
+    @include('Shared.Partials.WatsappButton')
     @include('Shared.Layouts.Footer')
     @yield('footer')
 </body>

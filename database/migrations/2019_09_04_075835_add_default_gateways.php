@@ -53,6 +53,7 @@ class AddDefaultGateways extends Migration
                     'is_on_site'              => 1,
                     'can_refund'              => 1,
                     'name'                    => 'Stripe',
+                    'status'                  => 0,
                     'default'                 => 0,
                     'admin_blade_template'    => 'ManageAccount.Partials.Stripe',
                     'checkout_blade_template' => 'Public.ViewEvent.Partials.PaymentStripe'
@@ -71,6 +72,7 @@ class AddDefaultGateways extends Migration
                     'is_on_site'              => 1,
                     'can_refund'              => 1,
                     'name'                    => 'Dummy',
+                    'status'                  => 0,
                     'default'                 => 0,
                     'admin_blade_template'    => '',
                     'checkout_blade_template' => 'Public.ViewEvent.Partials.Dummy'
@@ -89,6 +91,7 @@ class AddDefaultGateways extends Migration
                     'is_on_site'              => 0,
                     'can_refund'              => 1,
                     'name'                    => 'Stripe\PaymentIntents',
+                    'status'                 =>  0,
                     'default'                 => 0,
                     'admin_blade_template'    => 'ManageAccount.Partials.StripeSCA',
                     'checkout_blade_template' => 'Public.ViewEvent.Partials.PaymentStripeSCA'
