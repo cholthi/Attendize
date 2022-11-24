@@ -33,7 +33,7 @@
                  <img style="width: 150px;"  alt="Attendize" src="{{asset('assets/images/logo-light.png')}}"/>
                 <address style="margin-left:10px;">
                     Ticketana.com<br>
-                    Box 564, Juba Hai Seminary<br>
+                    Box 564, Airport Road<br>
                     South Sudan
                 </address>
             </div>
