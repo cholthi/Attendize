@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse flex-grow-0" id="navbarNavDropdown">
                 <ul class="navbar-nav align-items-lg-center p-4 p-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">How it works</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('faq') }}">How it works</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Browse Events</a>

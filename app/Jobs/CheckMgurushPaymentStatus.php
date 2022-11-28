@@ -17,7 +17,7 @@ class CheckMgurushPaymentStatus implements ShouldQueue
 
   public $tries = 3;
   public $backoff = 1;
-  protected $endpoint  =  'https://uat.mgurush.com/irh/ecomTxn/getTxnStatus';
+  protected $endpoint  =  'https://app.mgurush.com/irh/ecomTxn/getTxnStatus';
   protected  $order;
 
  /**
