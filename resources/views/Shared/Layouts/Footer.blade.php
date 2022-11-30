@@ -34,18 +34,19 @@
                 <address style="margin-left:10px;">
                     Ticketana.com<br>
                     Box 564, Airport Road<br>
-                    South Sudan
+                    Tel: +211 917 821 026</br>
+                    Juba - South Sudan
                 </address>
             </div>
 
         </div>
         <div class="py-2 fs-7 d-flex align-items-center">
             <span class="fs-7">© 2022 Ticketana</span>
-            <div class="footer-social d-flex align-items-center ms-auto gap-4">
-                <a href="">
+            <div class="footer-social d-flex align-items-center gap-4 ms-auto me-7">
+                <a href="https://facebook.com/ticketana">
                     <i class="ico-facebook me-1"></i> Facebook
                 </a>
-                <a href="">
+                <a href="https://twitter.com/ticketana">
                     <i class="ico-twitter me-1"></i> Twitter
                 </a>
             </div>

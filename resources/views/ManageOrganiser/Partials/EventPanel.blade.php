@@ -59,7 +59,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('getDeleteEvent', ['event_id' => $event->id])}}">
+                <a href="{{route('getDeleteEvent', ['event_id' => $event->id])}}" class="text-danger" onclick="return confirm('This will delete the Event and all its tickets. Are you sure?')">
                     <i class="ico-trash"></i> Delete
                 </a>
             </li>
