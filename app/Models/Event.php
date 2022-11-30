@@ -494,4 +494,32 @@ ICSTemplate;
 
         return $calculatedBookingFee;
     }
+
+    public static function boot()
+     {
+       parent::boot();
+
+       self::deleting(function(Event $event){
+         //delete event imagesx
+         foreach ($event->images as $image)
+            {
+                $image->delete();
+            }
+          //delete event tickets
+          foreach ($event->tickets as $ticket)
+            {
+                $ticket->delete();
+            }
+          //delete order
+          foreach ($event->orders as $order)
+            {
+                $order->delete();
+            }
+          //delete event attendees
+          foreach ($event->attendees as $attendee)
+            {
+                $attendee->delete();
+            }
+       } );
+     }
 }

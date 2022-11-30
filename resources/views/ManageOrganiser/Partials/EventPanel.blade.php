@@ -59,6 +59,11 @@
                 </a>
             </li>
             <li>
+                <a href="{{route('getDeleteEvent', ['event_id' => $event->id])}}">
+                    <i class="ico-trash"></i> Delete
+                </a>
+            </li>
+            <li>
                 <a href="{{route('showEventDashboard', ['event_id' => $event->id])}}">
                     <i class="ico-cog"></i> @lang("basic.manage")
                 </a>

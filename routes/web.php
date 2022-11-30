@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\EventAccessCodesController;
+use App\Http\Controllers\EventDeleteController;
 use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\EventAttendeesController;
 use App\Http\Controllers\EventCheckInController;
@@ -414,6 +415,12 @@ Route::group(
                 [EventTicketsController::class, 'postUpdateTicketsOrder']
             )->name('postUpdateTicketsOrder');
 
+           /* Delete Event
+           *
+           */
+           Route::get('{event_id}/delete',
+               [EventDeleteController::class, 'getDeleteEvent']
+           )->name('getDeleteEvent');
             /*
             * Offline Tickets
             *
