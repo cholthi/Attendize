@@ -24,7 +24,7 @@ class Gateway extends AbstractGateway
         return array(
             'currency' => 'SSP',
             'amount'    => '',
-            'partnerCode' => '1041',
+            'partnerCode' => '1228',
             'tnxRefNumber' => '',
             'access_key'   => '',
             'secret_key'   => '',
