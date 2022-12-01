@@ -398,10 +398,7 @@ class EventAttendeesController extends MyBaseController
          $orderService = new OrderService($ticket_price * $ticket_qty , 0, $event); //should we charge bookibg fee?
          $orderService->calculateFinalCosts();
          $order->taxamt = $orderService->getTaxAmount();
-
-         if ($orderService->getGrandTotal() == 0) {
-             $order->is_payment_received = 1;
-         }
+         $order->is_payment_received = 1;
 
          $order->save();
 
