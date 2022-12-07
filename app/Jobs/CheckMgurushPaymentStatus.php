@@ -9,6 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Log;
 use App\Models\Order;
+use App\Models\EventStat;
 
 class CheckMgurushPaymentStatus implements ShouldQueue
 {
@@ -71,6 +72,16 @@ class CheckMgurushPaymentStatus implements ShouldQueue
                    'order_status_id' => config('attendize.order.complete'),
                    'transaction_id'  => $decoded['message']['txnId']
                ]);
+
+            //update Event stats
+            $event = $order->event;
+            $event_stats = EventStats::updateOrCreate([
+                'event_id' => $event->id
+            ]);
+
+            $event_stats->increment('sales_volume', $order->amount);
+            $event_stats->increment('organiser_fees_volume', $order->organiser_booking_fee);
+            $event_stats->increment('tickets_sold', $ticket_order['total_ticket_quantity']);
         }
     }
 
