@@ -718,11 +718,11 @@ class EventCheckoutController extends Controller
                 'event_id' => $event_id,
                 'date'     => DB::raw('CURRENT_DATE'),
             ]);
-            $event_stats->increment('tickets_sold', $ticket_order['total_ticket_quantity']);
 
-            if ($ticket_order['order_requires_payment']) {
+            if ($ticket_order['order_requires_payment'] && $order->is_payment_received) {
                 $event_stats->increment('sales_volume', $order->amount);
                 $event_stats->increment('organiser_fees_volume', $order->organiser_booking_fee);
+                $event_stats->increment('tickets_sold', $ticket_order['total_ticket_quantity']);
             }
 
             /*
