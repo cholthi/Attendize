@@ -74,13 +74,13 @@ class CheckMgurushPaymentStatus implements ShouldQueue
                ]);
 
             //update Event stats
-            $event = $order->event;
+            $event = $this->order->event;
             $event_stats = EventStats::updateOrCreate([
                 'event_id' => $event->id
             ]);
 
-            $event_stats->increment('sales_volume', $order->amount);
-            $event_stats->increment('organiser_fees_volume', $order->organiser_booking_fee);
+            $event_stats->increment('sales_volume', $this->order->amount);
+            $event_stats->increment('organiser_fees_volume', $this->order->organiser_booking_fee);
             $event_stats->increment('tickets_sold', $ticket_order['total_ticket_quantity']);
         }
     }
