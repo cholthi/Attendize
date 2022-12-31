@@ -169,17 +169,22 @@ class EventCheckInController extends MyBaseController
         if ($attendee->has_arrived) {
             return response()->json([
                 'status'  => 'error',
-                'message' => trans("Controllers.attendee_already_checked_in", ["time"=> $attendee->arrival_time->format(config("attendize.default_datetime_format"))])
+                'message' => trans("Controllers.attendee_already_checked_in", ["time"=> $attendee->arrival_time->format(config("attendize.default_datetime_format"))]),
+                'attendee' => $attendee
             ]);
         }
 
         Attendee::find($attendee->id)->update(['has_arrived' => true, 'arrival_time' => Carbon::now()]);
 
+        //update cache attendee variable for frontend logic
+         $attendee->has_arrived = true;
+
         return response()->json([
             'status'  => 'success',
             'name' => $attendee->first_name." ".$attendee->last_name,
             'reference' => $attendee->reference,
-            'ticket' => $attendee->ticket
+            'ticket' => $attendee->ticket,
+            'attendee' => $attendee
         ]);
     }
 }

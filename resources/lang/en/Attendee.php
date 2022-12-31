@@ -6,6 +6,7 @@
 return array (
   //============================== New strings to translate ==============================//
   'scan_another_ticket' => 'Scan Another Ticket',
+  'check_out' => 'Check Out',
   'scanning' => 'Scanning',
   'has_arrived' => 'Has Arrived',
   'arrival_time' => 'Arrival Time',

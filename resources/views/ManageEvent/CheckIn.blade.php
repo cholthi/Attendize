@@ -126,7 +126,11 @@
         <video id="scannerVideo" playsinline autoplay></video>
 
         <div class="scannerButtons">
-                    <a @click="initScanner" v-show="!isScanning" href="javascript:void(0);">
+               <a @click="toggleCheckin(scanResultObject.attendee)" v-show="!isScanning && scanResult && scanResultObject.attendee" href="">
+                @lang("Attendee.check_out")
+               </a>
+                </br>
+                  <a @click="initScanner" v-show="!isScanning" href="javascript:void(0);">
                     @lang("Attendee.scan_another_ticket")
                     </a>
         </div>
