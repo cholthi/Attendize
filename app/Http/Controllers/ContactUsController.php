@@ -42,7 +42,7 @@ class ContactUsController extends Controller
 
       $contact_mailer = new ContactMailer($contact_info);
       if($contact_mailer->sendContactReciept($contact_info)){
-      $request->session()->flash('success', 'Record successfully added!');
+      $request->session()->flash('success', 'Your message has been received! We will get back to you as soon as poosible.);
       return redirect()->back();
     }
     $request->session()->flash('danger', 'There was a problem, Please try again');
