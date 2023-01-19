@@ -41,6 +41,7 @@ use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserLogoutController;
 use App\Http\Controllers\UserSignupController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\ContactUsController;
 
 Route::group(
     [
@@ -55,6 +56,14 @@ Route::group(
 
     Route::get('h',
       [HomePageController::class, 'showEventsHomePage'])->name('home');
+
+  //Contact us page
+  Route::get('contact-us',
+    [ContactUsController::class, 'showContactPage'])->name('contactUs');
+
+    //Contact us page
+    Route::post('contact-us',
+      [ContactUsController::class, 'postContactPage'])->name('postContactUs');
 
 /*Terms and conditions route
      */
