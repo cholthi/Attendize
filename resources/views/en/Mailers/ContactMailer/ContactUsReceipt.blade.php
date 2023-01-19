@@ -5,9 +5,9 @@ Hello {{$contact_info['full_name']}},<br><br>
 
 Your message has been received. Our representative will get to back you shortly.
 
-Your Name: {{$contact_info['full_name']}}
-Your Email: {{$contact_info['email']}}
-Your Message: {{$contact_info['message']}}
+Your Name: {{$contact_info['full_name']}} <br>
+Your Email: {{$contact_info['email']}} <br>
+Your Message: {{$contact_info['message']}} <br>
 
 <br><br>
 Regards
