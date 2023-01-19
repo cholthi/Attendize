@@ -29,6 +29,8 @@ class ContactMailer extends Mailer
         });
       }
 
+      return true;
+
     }
 
 
