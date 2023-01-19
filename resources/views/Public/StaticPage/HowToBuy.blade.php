@@ -4,10 +4,10 @@
 @stop
 
 @section('content')
-<section class="bg-white container mx-auto" style="color:black;width:80%;">
+<div class="container mx-auto" style="color:black;width:90%;">
 <div class="card shadow">
           <div class="card-header bg-primary text-white">
-            <h2 class="h3 mb-3 px-2 text-center">How to buy ticket online</h2>
+            <h2 class="h3 mb-3 px-2 text-center">How to buy a ticket online</h2>
           </div>
           <div class="card-body px-2">
             <ol class="instructions list-unstyled">
@@ -40,7 +40,7 @@
                 </p>
               </li>
               <li class="mb">
-                <h6>Step 5. Upon successful payment, you will receive an email from Ticketana with ticket attached to it. You can print it or have the pdf in your phone to show the event check in.</h6>
+                <h6>Step 5. Upon successful payment, you will receive an email from Ticketana with ticket attached to it. You can print it or have the pdf in your phone to show during the event check in.</h6>
                 <p>
                   <img class="mt-5 mb-5 img-fluid" src="{{asset('assets/images/static/4.png')}}" alt="Email">
                 </p>
@@ -49,7 +49,7 @@
           </div>
         </div>
 
-</section>
+</div>
 @stop
 
 @section('footer')
