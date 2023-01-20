@@ -11,7 +11,7 @@
                         <a href="{{route('howToSell')}}" class="footer-link">How to sell tickets</a>
                     </li>
                    <li class="footer-link-item">
-                        <a href="#" class="footer-link">Contact us</a>
+                        <a href="{{route('contactUs')}}" class="footer-link">Contact us</a>
                     </li>
 
                 </ul>

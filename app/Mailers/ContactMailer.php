@@ -20,14 +20,13 @@ class ContactMailer extends Mailer
             'contact_info' => $contact_info,
         ];
 
-        $recipients = [$contact_info['email'],'chol@ticketana.com','sales@ticketana.com'];
-      foreach($recipients as $recipient)
-       {
-        Mail::send('en.Mailers.ContactMailer.ContactUsReceipt', $data, function ($message) use ($recipient) {
-            $message->to($recipient);
+        $cc = ['chol@ticketana.com','sales@ticketana.com'];
+
+        Mail::send('en.Mailers.ContactMailer.ContactUsReceipt', $data, function ($message) use ($cc) {
+            $message->to($contact_info['email']);
+            $message->cc($cc);
             $message->subject("Thank you! Your message has been received");
         });
-      }
 
       return true;
 
