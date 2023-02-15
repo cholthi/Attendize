@@ -22,7 +22,7 @@ class ContactMailer extends Mailer
 
         $cc = ['chol@ticketana.com','sales@ticketana.com'];
 
-        Mail::send('en.Mailers.ContactMailer.ContactUsReceipt', $data, function ($message) use ($cc) {
+        Mail::send('en.Mailers.ContactMailer.ContactUsReceipt', $data, function ($message) use ($cc, $contact_info) {
             $message->to($contact_info['email']);
             $message->cc($cc);
             $message->subject("Thank you! Your message has been received");
