@@ -42,7 +42,7 @@ class CheckMgurushPaymentStatus implements ShouldQueue
     public function handle()
     {
      //check order is free and bail out
-    if(PaymentUtils::isfree($this->order->amount)
+    if(PaymentUtils::isfree($this->order->amount))
       {
         return;
       }
