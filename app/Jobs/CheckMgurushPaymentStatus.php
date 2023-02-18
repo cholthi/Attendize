@@ -10,6 +10,7 @@ use Illuminate\Queue\SerializesModels;
 use Log;
 use App\Models\Order;
 use App\Models\EventStat;
+use App\Attendize\PaymentUtils;
 
 class CheckMgurushPaymentStatus implements ShouldQueue
 {
@@ -40,6 +41,11 @@ class CheckMgurushPaymentStatus implements ShouldQueue
      */
     public function handle()
     {
+     //check order is free and bail out
+    if(PaymentUtils::isfree($this->order->amount)
+      {
+        return;
+      }
      $payment_config = $this->order->account->getGateway($this->order->payment_gateway_id);
      $client = new \GuzzleHttp\Client();
 
